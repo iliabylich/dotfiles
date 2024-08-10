@@ -1,0 +1,4 @@
+$accentColor = rgb(${ACCENT_COLOR})
+$accentDarkColor = rgb(${ACCENT_DARK_COLOR})
+$textColor = rgb(${TEXT_COLOR})
+$bgColor = rgb(${BG_COLOR})

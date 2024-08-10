@@ -1,0 +1,8 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.formatOnSave": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "extensions.ignoreRecommendations": true
+}

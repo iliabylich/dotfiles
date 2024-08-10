@@ -1,0 +1,6 @@
+{
+    "clock": {
+        "format": "{:%R}",
+        "tooltip-format": "<big>{:%Y %B %d\n %A}</big>"
+    }
+}

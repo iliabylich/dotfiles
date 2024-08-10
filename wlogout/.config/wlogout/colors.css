@@ -1,0 +1,11 @@
+#test { color: #90A959; }
+@define-color accentColor #90A959;
+
+#test { color: #526035; }
+@define-color accentDarkColor #526035;
+
+#test { color: #D0D0D0; }
+@define-color textColor #D0D0D0;
+
+#test { color: #151515; }
+@define-color bgColor #151515;

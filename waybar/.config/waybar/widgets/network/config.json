@@ -1,0 +1,10 @@
+{
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "~/.config/waybar/waybar-network-applet.sh",
+        "tooltip": false
+    }
+}

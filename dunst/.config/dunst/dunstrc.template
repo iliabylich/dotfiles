@@ -1,0 +1,47 @@
+[global]
+    origin = top-center
+
+    padding = 20
+    horizontal_padding = 20
+
+    frame_width = 3
+    frame_color = "#${ACCENT_COLOR}"
+
+    gap_size = 10
+
+    font = Font Awesome 5 Free
+    format = "<b>%s</b>\n%b"
+
+    alignment = center
+    vertical_alignment = center
+
+    corners = all
+    corner_radius = 10
+
+    mouse_left_click = close_current
+    mouse_middle_click = close_current
+    mouse_right_click = close_all
+
+[urgency_low]
+    background = "#${ACCENT_DARK_COLOR}"
+    foreground = "#${ACCENT_COLOR}"
+    timeout = 3
+    icon =
+    default_icon =
+
+[urgency_normal]
+    background = "#${ACCENT_DARK_COLOR}"
+    foreground = "#${ACCENT_COLOR}"
+    timeout = 3
+    override_pause_level = 30
+    icon =
+    default_icon =
+
+[urgency_critical]
+    background = "#${ACCENT_DARK_COLOR}"
+    foreground = "#${ACCENT_COLOR}"
+    frame_color = "#ff0000"
+    timeout = 3
+    override_pause_level = 60
+    icon =
+    default_icon =
