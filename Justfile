@@ -11,6 +11,7 @@ link-all:
     @just link wofi
     @just link wlogout
     @just link dunst
+    @just link ags
 
 link MOD:
     stow -d . -t ~ {{MOD}}
