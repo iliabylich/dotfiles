@@ -3,7 +3,6 @@ default:
 
 link-all:
     @just link bash
-    @just link bash
     @just link hypr
     @just link code
     @just link wallpapers
