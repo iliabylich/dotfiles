@@ -26,14 +26,14 @@ const buttons = [
         label: "Reboot",
         onclick: () => {
             App.closeWindow("widget-logout")
-            Utils.execAsync("systemctl poweroff")
+            Utils.execAsync("systemctl reboot")
         }
     },
     {
         label: "Shutdown",
         onclick: () => {
             App.closeWindow("widget-logout")
-            Utils.execAsync("systemctl reboot")
+            Utils.execAsync("systemctl poweroff")
         }
     },
     {
