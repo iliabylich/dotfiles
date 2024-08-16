@@ -2,7 +2,7 @@
 
 export default function Power() {
     return Widget.Button({
-        on_clicked: () => console.log("clicked"),
+        on_clicked: () => App.toggleWindow("widget-logout"),
         child: Widget.Label("      "),
         cursor: "pointer",
         class_name: "power widget padded clickable"

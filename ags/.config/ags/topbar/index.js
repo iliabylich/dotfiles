@@ -11,11 +11,11 @@ import Language from "./language.js"
 
 export default function Topbar(monitor = 0) {
     return Widget.Window({
-        name: `bar-${monitor}`, // name has to be unique
+        name: `bar-${monitor}`,
         class_name: "bar",
         monitor,
         anchor: ["top", "left", "right"],
-        exclusivity: "exclusive",
+        cursor: "default",
         child: Widget.CenterBox({
             class_name: "main-wrapper",
             start_widget: Widget.Box({

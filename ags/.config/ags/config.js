@@ -3,6 +3,7 @@
 import Topbar from "./topbar/index.js"
 import NetworkWidget from "./widgets/network.js"
 import Launcher from "./widgets/launcher.js"
+import Logout from "./widgets/logout.js"
 
 import hyperland from "./services/hyperland.js"
 hyperland.minWorkspaces = 5
@@ -17,5 +18,6 @@ App.config({
 
         NetworkWidget,
         Launcher,
+        Logout
     ],
 })
