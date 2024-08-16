@@ -1,5 +1,0 @@
-watch-reload:
-	cargo watch -C $PWD -- killall -SIGUSR2 waybar
-
-reload:
-	killall -SIGUSR2 waybar

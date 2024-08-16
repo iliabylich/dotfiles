@@ -5,7 +5,6 @@ link-all:
     @just link bash
     @just link bash
     @just link hypr
-    @just link waybar
     @just link code
     @just link wallpapers
     @just link wofi
@@ -18,10 +17,6 @@ link MOD:
 
 render-templates:
     ./templates.sh
-
-reload-waybar:
-    @just render-templates
-    killall -SIGUSR2 waybar
 
 notify-send text:
     @just render-templates

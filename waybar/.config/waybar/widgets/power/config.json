@@ -1,7 +1,0 @@
-{
-    "custom/power": {
-        "format": "",
-        "on-click": "wlogout -T 300 -B 300 -b 4 -c 10",
-        "tooltip": false
-    }
-}
