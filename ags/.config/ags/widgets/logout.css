@@ -1,0 +1,17 @@
+.widget-logout {
+    background-color: rgba(100, 100, 100, 0.8);
+}
+
+.widget-logout-wrapper {
+    padding: 300px 100px;
+}
+
+.widget-logout-button {
+    border: 5px solid @accentColor;
+    border-radius: 20px;
+}
+
+.widget-logout-button-action,
+.widget-logout-button:hover {
+    background-color: rgba(100, 100, 100, 1);
+}

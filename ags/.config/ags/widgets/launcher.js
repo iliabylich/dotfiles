@@ -84,7 +84,7 @@ const applauncher = Widget.Window({
         self.keybind("Up", () => launcher.goUp())
     },
     class_names: ["widget-launcher"],
-    visible: true,
+    visible: false,
     keymode: "exclusive",
     child: Applauncher(),
     width_request: 700,

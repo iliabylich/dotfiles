@@ -8,7 +8,6 @@ link-all:
     @just link code
     @just link wallpapers
     @just link wofi
-    @just link wlogout
     @just link dunst
     @just link ags
 

@@ -79,7 +79,4 @@ tooltip {
 
 @import url("widgets/network.css");
 @import url("widgets/launcher.css");
-
-.logout-widget {
-    background-color: rgba(100, 100, 100, 0.8);
-}
+@import url("widgets/logout.css");
