@@ -14,7 +14,10 @@ const INDICATORS = [
 ]
 
 function indicator(load) {
-    const idx = Math.trunc(load / INDICATORS.length)
+    let idx = Math.trunc(load / 100 * INDICATORS.length)
+    if (idx == INDICATORS.length) {
+        idx -= 1
+    }
     return INDICATORS[idx]
 }
 

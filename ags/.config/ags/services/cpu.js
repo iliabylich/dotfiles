@@ -49,6 +49,7 @@ class CPU extends Service {
         }
 
         this.#usage = current.map((cpu, i) => cpu.loadComparingTo(this.#previous[i]))
+        this.#previous = current
         this.changed("usage")
     }
 
