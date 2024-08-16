@@ -25,7 +25,7 @@ function NoConnection() {
 export default function Network() {
     return Widget.Button({
         class_name: "network widget padded clickable",
-        on_clicked: () => console.log("Opening widget"),
+        on_primary_click: () => App.toggleWindow("widget-network"),
         cursor: "pointer",
         child: Widget.Stack({
             children: {
