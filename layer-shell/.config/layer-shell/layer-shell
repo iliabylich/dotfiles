@@ -3,7 +3,6 @@
 set -eu
 
 export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libgtk4-layer-shell.so"
-export GI_TYPELIB_PATH="/usr/lib/x86_64-linux-gnu"
 
 MESSAGES="$HOME/.config/layer-shell/.messages"
 

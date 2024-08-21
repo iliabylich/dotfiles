@@ -1,6 +1,10 @@
 import GObject from "gi://GObject?version=2.0";
 import Gtk from "gi://Gtk?version=4.0";
-import Gvc from 'gi://Gvc?version=1.0';
+
+const GIRepository = imports.gi.GIRepository;
+GIRepository.Repository.prepend_search_path("/usr/lib/gnome-shell");
+GIRepository.Repository.prepend_library_path("/usr/lib/gnome-shell");
+const Gvc = imports.gi.Gvc;
 
 const Sound = GObject.registerClass({
     GTypeName: 'Sound'
