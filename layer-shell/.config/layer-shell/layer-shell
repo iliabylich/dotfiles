@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -eu
+
+export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libgtk4-layer-shell.so"
+export GI_TYPELIB_PATH="/usr/lib/x86_64-linux-gnu"
+
+MESSAGES="$HOME/.config/layer-shell/.messages"
+
+function printUsageAndExit() {
+    echo "Usage: "
+    echo "  layer-shell start                    -- starts layer shell"
+    echo "  layer-shell toggle <WindowNamespace> -- toggles given window"
+    echo "  layer-shell stop                     -- stops running shell"
+    exit 1
+}
+
+function message() {
+    echo "$1" >> $MESSAGES
+    pgrep -f "layer-shell" | xargs kill -SIGUSR1
+}
+
+if (( $# == 0 )); then
+    printUsageAndExit
+fi
+
+case "$1" in
+    "toggle")
+        if (( $# != 2 )); then
+            printUsageAndExit
+        fi
+        message "{\"type\": \"toggleWindow\", \"namespace\": \"$2\"}"
+
+        ;;
+
+    "start")
+        rm -f "$MESSAGES"
+        touch "$MESSAGES"
+        gjs -m "$(dirname "$0")/main.js"
+        ;;
+
+    "stop")
+        message "{\"type\": \"stop\"}"
+        ;;
+
+    *)
+        printUsageAndExit
+
+        ;;
+esac

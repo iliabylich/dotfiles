@@ -1,0 +1,82 @@
+@import url("colors.css");
+
+/* reset */
+* {
+    all: unset;
+}
+
+* {
+    font-family: Roboto, "Font Awesome 5 Free";
+    font-size: 13px;
+    font-weight: normal;
+    color: @textColor;
+    text-decoration: none;
+}
+
+.main-wrapper {
+    padding: 10px;
+    min-height: 36px;
+}
+
+.widget {
+    border: 2px @accentColor solid;
+    border-radius: 10px;
+}
+
+.widget.clickable:hover {
+    background-color: @accentColor;
+}
+
+.widget.clickable:hover label {
+    color: @bgColor;
+}
+
+.widget.padded {
+    padding: 0 10px;
+}
+
+tooltip {
+    background-color: @bgColor;
+    padding: 2px;
+    border: 1px solid @accentColor;
+}
+
+.workspaces button {
+    min-width: 35px;
+}
+
+.workspaces button:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.workspaces button:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.workspaces button.active {
+    background-color: @accentColor;
+}
+
+.sound-slider {
+    min-width: 150px;
+}
+
+.sound-slider trough {
+    min-width: 1px;
+    background-color: black;
+    min-height: 10px;
+    border: 1px solid @textColor;
+    border-radius: 5px;
+}
+
+.sound-slider highlight {
+    min-width: 1px;
+    background-color: @accentColor;
+    border-radius: 5px;
+}
+
+@import url("network.css");
+@import url("launcher.css");
+@import url("logout.css");

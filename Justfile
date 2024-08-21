@@ -8,7 +8,7 @@ link-all:
     @just link wallpapers
     @just link wofi
     @just link dunst
-    @just link ags
+    @just link layer-shell
 
 link MOD:
     stow -d . -t ~ {{MOD}}

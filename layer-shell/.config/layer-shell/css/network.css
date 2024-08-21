@@ -1,0 +1,23 @@
+.widget-network-row-list {
+    border: 5px solid @accentColor;
+    border-radius: 10px;
+    background-color: rgba(100, 100, 100, 0.8);
+}
+
+.widget-network-row {
+    background-color: rgba(100, 100, 100, 0.8);
+    padding: 10px;
+    min-width: 500px;
+}
+
+.widget-network-row:hover {
+    background-color: rgba(100, 100, 100, 0.85);
+}
+
+.widget-network image {
+    color: @accentColor;
+}
+
+.widget-network image:active {
+    color: @accentDarkColor;
+}
