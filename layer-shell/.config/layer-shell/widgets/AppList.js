@@ -7,6 +7,7 @@ const AppList = GObject.registerClass({
     GTypeName: 'AppList'
 }, class extends Gtk.Box {
     #container = null;
+    #entry = null;
 
     #applist = new AppListModel(8);
 
@@ -21,23 +22,23 @@ const AppList = GObject.registerClass({
             orientation: Gtk.Orientation.VERTICAL,
         })
 
-        const entry = new Gtk.Entry({
+        this.#entry = new Gtk.Entry({
             css_classes: ["widget-launcher-search-box"],
             hexpand: true,
             text: "",
             primary_icon_name: "system-search",
         });
-        entry.connect("activate", () => {
+        this.#entry.connect("activate", () => {
             if (this.#applist.selectedApp) {
                 this.#applist.selectedApp.launch();
                 this.#close();
             }
         });
-        entry.connect("notify::text", ({ text }) => {
+        this.#entry.connect("notify::text", ({ text }) => {
             this.#applist.search = text;
             this.#render();
         })
-        this.append(entry);
+        this.append(this.#entry);
 
         this.append(new Gtk.ScrolledWindow({
             css_classes: ["widget-launcher-scroll-list"],
@@ -65,6 +66,7 @@ const AppList = GObject.registerClass({
 
     reset() {
         this.#applist.reset();
+        this.#entry.text = "";
         this.#render();
     }
 
