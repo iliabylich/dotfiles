@@ -1,6 +1,8 @@
 import Gio from "gi://Gio?version=2.0";
 import GLib from "gi://GLib?version=2.0";
 
+import execAsync from "./execAsync.js";
+
 const HYPRLAND_INSTANCE_SIGNATURE = GLib.getenv('HYPRLAND_INSTANCE_SIGNATURE');
 const XDG_RUNTIME_DIR = GLib.getenv('XDG_RUNTIME_DIR');
 
@@ -35,8 +37,87 @@ function readNextLine() {
 
 readNextLine()
 
-function subscribe(handler) {
-    eventHandlers.push(handler);
+export class HyprlandWorkspaces {
+    #minWorkspaces = 0;
+    #workspaceIds = new Set();
+    #activeId = 0;
+    #onChange = () => { };
+
+    constructor({ minWorkspaces, onChange }) {
+        this.#minWorkspaces = minWorkspaces;
+        this.#onChange = onChange;
+
+        eventHandlers.push(async (event, payload) => {
+            try {
+                if (event === "createworkspace") {
+                    this.#workspaceIds.add(parseInt(payload, 10));
+                    this.#changed();
+                } else if (event === "destroyworkspace") {
+                    this.#workspaceIds.delete(parseInt(payload, 10));
+                    this.#changed();
+                } else if (event === "workspace") {
+                    this.#activeId = parseInt(payload, 10);
+                    this.#changed();
+                }
+            } catch (e) {
+                console.error("[Workspace] error", e);
+            }
+        })
+
+        this.#loadInitialData();
+    }
+
+    goTo(id) {
+        execAsync(["hyprctl", "dispatch", "workspace", `${id}`])
+    }
+
+    async #execHyprctl(cmd) {
+        const stdout = await execAsync(["hyprctl", ...cmd]);
+        return JSON.parse(stdout)
+    }
+
+    async #resync() {
+        const workspaces = await this.#execHyprctl(["workspaces", "-j"]);
+        this.#workspaceIds = new Set(workspaces.map(w => w.id));
+
+        const activeWorkspaces = await this.#execHyprctl(["activeworkspace", "-j"]);
+        this.#activeId = activeWorkspaces.id;
+    }
+
+    async #loadInitialData() {
+        try {
+            await this.#resync();
+            this.#changed();
+        } catch (e) {
+            console.error("[Workspaces] error", e);
+        }
+    }
+
+    #changed() {
+        this.#onChange(this.#data);
+    }
+
+    get #data() {
+        const idsToShow = new Set(this.#workspaceIds)
+        idsToShow.add(this.#activeId)
+
+        // create min required number of workspaces
+        for (let id = 1; id <= this.#minWorkspaces; id++) {
+            idsToShow.add(id)
+        }
+
+        const workspaces = [];
+        for (let id = 1; id <= 10; id++) {
+            workspaces.push({
+                id,
+                isVisible: idsToShow.has(id),
+                isActive: id === this.#activeId
+            })
+        }
+        return workspaces;
+    }
 }
 
-export { subscribe }
+export function subscribe(handler) {
+    eventHandlers.push(handler);
+}
