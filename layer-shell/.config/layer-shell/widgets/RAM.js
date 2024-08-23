@@ -1,31 +1,30 @@
-import GObject from "gi://GObject?version=2.0";
-import Gtk from "gi://Gtk?version=4.0";
 import execAsync from "../lib/execAsync.js";
 import Memory from "../models/Memory.js";
+import loadTemplate from "../lib/loadTemplate.js";
 
-const RAM = GObject.registerClass({
-    GTypeName: 'RAM'
-}, class extends Gtk.Button {
+export default class RAM {
+    #widget = null;
+    #label = null;
+
     constructor() {
-        super({
-            css_classes: ["widget", "memory", "padded", "clickable"],
-            child: new Gtk.Label({
-                label: ""
-            })
-        })
+        const [widget, label] = loadTemplate("RAM", "RAMLabel");
+        this.#widget = widget;
+        this.#label = label;
 
         new Memory({
             onChange: (memory) => this.#refresh(memory)
+        });
+
+        this.#widget.connect("clicked", () => {
+            execAsync(["gnome-system-monitor"]);
         })
     }
 
-    vfunc_clicked() {
-        execAsync(["gnome-system-monitor"]);
+    get widget() {
+        return this.#widget;
     }
 
     #refresh({ total, used }) {
-        this.get_first_child().label = `RAM ${used.toFixed(1)}G/${total.toFixed(1)}G`
+        this.#label.label = `RAM ${used.toFixed(1)}G/${total.toFixed(1)}G`
     }
-});
-
-export default RAM;
+}

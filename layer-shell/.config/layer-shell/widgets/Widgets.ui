@@ -6,6 +6,19 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
 -->
 <interface>
   <requires lib="gtk" version="4.0"/>
+  <object class="GtkButton" id="RAM">
+    <style>
+      <class name="widget"/>
+      <class name="memory"/>
+      <class name="padded"/>
+      <class name="clickable"/>
+    </style>
+    <child>
+      <object class="GtkLabel" id="RAMLabel">
+        <property name="label"></property>
+      </object>
+    </child>
+  </object>
   <object class="GtkBox" id="Sound">
     <style>
       <class name="widget"/>

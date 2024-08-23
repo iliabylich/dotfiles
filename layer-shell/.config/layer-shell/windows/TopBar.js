@@ -43,7 +43,7 @@ const TopBar = GObject.registerClass({
                         new Language(),
                         new Sound().widget,
                         new CPU(),
-                        new RAM(),
+                        new RAM().widget,
                         new WiFi().widget,
                         new Clock({
                             format: "%H:%M:%S",
