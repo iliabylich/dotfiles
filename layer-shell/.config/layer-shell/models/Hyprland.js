@@ -118,6 +118,31 @@ export class HyprlandWorkspaces {
     }
 }
 
-export function subscribe(handler) {
-    eventHandlers.push(handler);
+export class HyprlandLanguage {
+    #onChange = null;
+
+    constructor({ onChange }) {
+        this.#onChange = onChange;
+
+        this.#loadInitialValue();
+
+        eventHandlers.push((event, payload) => {
+            if (event === "activelayout") {
+                const payloadParts = payload.split(",")
+                const layout = payloadParts[payloadParts.length - 1];
+
+                this.#onChange(layout)
+            }
+        });
+    }
+
+    async #loadInitialValue() {
+        try {
+            const devices = JSON.parse(await execAsync(["hyprctl", "devices", "-j"]));
+            const layout = devices.keyboards.find(kb => kb.main).active_keymap;
+            this.#onChange(layout)
+        } catch (e) {
+            console.error("[Language] error", e)
+        }
+    }
 }

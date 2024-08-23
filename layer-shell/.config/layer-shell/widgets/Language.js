@@ -1,7 +1,6 @@
 import GObject from "gi://GObject?version=2.0";
 import Gtk from "gi://Gtk?version=4.0";
-import { subscribe } from "../models/Hyprland.js";
-import execAsync from "../lib/execAsync.js";
+import { HyprlandLanguage } from "../models/Hyprland.js";
 
 const mapping = {
     "English (US)": "EN",
@@ -19,26 +18,9 @@ const Language = GObject.registerClass({
             })
         });
 
-        this.#loadInitialValue();
-
-        subscribe((event, payload) => {
-            if (event === "activelayout") {
-                const payloadParts = payload.split(",")
-                const layout = payloadParts[payloadParts.length - 1];
-
-                this.#render(layout)
-            }
+        new HyprlandLanguage({
+            onChange: (layout) => this.#render(layout)
         })
-    }
-
-    async #loadInitialValue() {
-        try {
-            const devices = JSON.parse(await execAsync(["hyprctl", "devices", "-j"]));
-            const layout = devices.keyboards.find(kb => kb.main).active_keymap;
-            this.#render(layout)
-        } catch (e) {
-            console.error("[Language] error", e)
-        }
     }
 
     #render(layout) {
