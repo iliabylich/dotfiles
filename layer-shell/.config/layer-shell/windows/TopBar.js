@@ -40,7 +40,7 @@ const TopBar = GObject.registerClass({
                 end_widget: new BoxWithChildren({
                     spacing: 4,
                     children: [
-                        new Language(),
+                        new Language().widget,
                         new Sound().widget,
                         new CPU(),
                         new RAM().widget,

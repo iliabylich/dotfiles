@@ -1,32 +1,30 @@
-import GObject from "gi://GObject?version=2.0";
-import Gtk from "gi://Gtk?version=4.0";
 import { HyprlandLanguage } from "../models/Hyprland.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
 const mapping = {
     "English (US)": "EN",
     "Polish": "PL",
 };
 
-const Language = GObject.registerClass({
-    GTypeName: 'Language'
-}, class extends Gtk.CenterBox {
+export default class Language {
+    #widget = null;
+    #label = null;
+
     constructor() {
-        super({
-            css_classes: ["widget", "language", "padded"],
-            center_widget: new Gtk.Label({
-                label: "??"
-            })
-        });
+        const [widget, label] = loadWidgets("Language", "LanguageLabel");
+        this.#widget = widget;
+        this.#label = label;
 
         new HyprlandLanguage({
             onChange: (layout) => this.#render(layout)
         })
     }
 
-    #render(layout) {
-        const code = mapping[layout];
-        this.get_first_child().label = code;
+    get widget() {
+        return this.#widget;
     }
-});
 
-export default Language;
+    #render(layout) {
+        this.#label.label = mapping[layout];
+    }
+}
