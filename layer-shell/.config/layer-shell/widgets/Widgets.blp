@@ -1,6 +1,18 @@
 using Gtk 4.0;
 using Gdk 4.0;
 
+Button PowerButton {
+    styles ["power", "widget", "padded", "clickable"]
+
+    cursor: Gdk.Cursor {
+        name: "pointer";
+    };
+
+    Label {
+        label: "      ";
+    }
+}
+
 Button RAM {
     styles ["widget", "memory", "padded", "clickable"]
 

@@ -1,5 +1,5 @@
 import OutputSound from "../models/OutputSound.js";
-import loadTemplate from "../lib/loadTemplate.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
 export default class Sound {
     #widget = null;
@@ -8,7 +8,7 @@ export default class Sound {
     #output = null;
 
     constructor() {
-        const [widget, icon, scale] = loadTemplate("Sound", "SoundImage", "SoundScale");
+        const [widget, icon, scale] = loadWidgets("Sound", "SoundImage", "SoundScale");
 
         this.#widget = widget;
         this.#icon = icon;

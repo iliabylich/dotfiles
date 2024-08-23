@@ -49,7 +49,7 @@ const TopBar = GObject.registerClass({
                             format: "%H:%M:%S",
                             tooltipFormat: "%Y %B %e\n%A"
                         }),
-                        new PowerButton()
+                        new PowerButton().widget
                     ]
                 })
             }),

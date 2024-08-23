@@ -1,23 +1,21 @@
 import GObject from 'gi://GObject?version=2.0';
 import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
+import loadWidgets from '../lib/loadWidgets.js';
 
-const PowerButton = GObject.registerClass({
-    GTypeName: 'PowerButton'
-}, class extends Gtk.Button {
+export default class PowerButton {
+    #widget = null;
+
     constructor() {
-        super({
-            child: new Gtk.Label({
-                label: "      "
-            }),
-            cursor: new Gdk.Cursor({ name: "pointer" }),
-            css_classes: ["power", "widget", "padded", "clickable"]
+        const [widget] = loadWidgets("PowerButton");
+        this.#widget = widget;
+
+        this.#widget.connect("clicked", () => {
+            globalThis.app.toggleWindowByNamespace("LogoutScreen");
         })
     }
 
-    vfunc_clicked() {
-        globalThis.app.toggleWindowByNamespace("LogoutScreen");
+    get widget() {
+        return this.#widget;
     }
-});
-
-export default PowerButton;
+}

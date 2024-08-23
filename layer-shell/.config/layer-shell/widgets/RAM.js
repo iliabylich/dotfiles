@@ -1,13 +1,13 @@
 import execAsync from "../lib/execAsync.js";
 import Memory from "../models/Memory.js";
-import loadTemplate from "../lib/loadTemplate.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
 export default class RAM {
     #widget = null;
     #label = null;
 
     constructor() {
-        const [widget, label] = loadTemplate("RAM", "RAMLabel");
+        const [widget, label] = loadWidgets("RAM", "RAMLabel");
         this.#widget = widget;
         this.#label = label;
 

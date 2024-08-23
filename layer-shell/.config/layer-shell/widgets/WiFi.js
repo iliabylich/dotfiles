@@ -1,12 +1,12 @@
 import { WiFiStatus } from "../models/NetworkManager.js";
-import loadTemplate from "../lib/loadTemplate.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
 export default class WiFi {
     #widget = null;
     #label = null;
 
     constructor() {
-        const [widget, label] = loadTemplate("WiFi", "WiFiLabel");
+        const [widget, label] = loadWidgets("WiFi", "WiFiLabel");
         this.#widget = widget;
         this.#label = label;
 

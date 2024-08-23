@@ -1,5 +1,5 @@
 import { HyprlandWorkspaces } from "../models/Hyprland.js";
-import loadTemplate from "../lib/loadTemplate.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
 export default class Workspaces {
     #widget = null;
@@ -7,7 +7,7 @@ export default class Workspaces {
     #hyprland = null;
 
     constructor({ minWorkspaces }) {
-        const [widget, ...buttons] = loadTemplate(
+        const [widget, ...buttons] = loadWidgets(
             "Workspaces",
 
             "WorkspaceButton1",
