@@ -6,13 +6,31 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
 -->
 <interface>
   <requires lib="gtk" version="4.0"/>
+  <object class="GtkButton" id="WiFi">
+    <style>
+      <class name="network"/>
+      <class name="widget"/>
+      <class name="padded"/>
+      <class name="clickable"/>
+    </style>
+    <property name="cursor">
+      <object class="GdkCursor">
+        <property name="name">pointer</property>
+      </object>
+    </property>
+    <child>
+      <object class="GtkLabel" id="WiFiLabel">
+        <property name="label"></property>
+      </object>
+    </child>
+  </object>
   <object class="GtkBox" id="Workspaces">
     <style>
       <class name="workspaces"/>
       <class name="widget"/>
     </style>
     <child>
-      <object class="GtkButton" id="button1">
+      <object class="GtkButton" id="WorkspaceButton1">
         <child>
           <object class="GtkLabel">
             <property name="label">1</property>
@@ -21,7 +39,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button2">
+      <object class="GtkButton" id="WorkspaceButton2">
         <child>
           <object class="GtkLabel">
             <property name="label">2</property>
@@ -30,7 +48,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button3">
+      <object class="GtkButton" id="WorkspaceButton3">
         <child>
           <object class="GtkLabel">
             <property name="label">3</property>
@@ -39,7 +57,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button4">
+      <object class="GtkButton" id="WorkspaceButton4">
         <child>
           <object class="GtkLabel">
             <property name="label">4</property>
@@ -48,7 +66,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button5">
+      <object class="GtkButton" id="WorkspaceButton5">
         <child>
           <object class="GtkLabel">
             <property name="label">5</property>
@@ -57,7 +75,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button6">
+      <object class="GtkButton" id="WorkspaceButton6">
         <child>
           <object class="GtkLabel">
             <property name="label">6</property>
@@ -66,7 +84,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button7">
+      <object class="GtkButton" id="WorkspaceButton7">
         <child>
           <object class="GtkLabel">
             <property name="label">7</property>
@@ -75,7 +93,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button8">
+      <object class="GtkButton" id="WorkspaceButton8">
         <child>
           <object class="GtkLabel">
             <property name="label">8</property>
@@ -84,7 +102,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button9">
+      <object class="GtkButton" id="WorkspaceButton9">
         <child>
           <object class="GtkLabel">
             <property name="label">9</property>
@@ -93,7 +111,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
     <child>
-      <object class="GtkButton" id="button10">
+      <object class="GtkButton" id="WorkspaceButton10">
         <child>
           <object class="GtkLabel">
             <property name="label">10</property>

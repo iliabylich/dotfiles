@@ -10,16 +10,16 @@ export default class Workspaces {
         const [widget, ...buttons] = loadTemplate(
             "Workspaces",
 
-            "button1",
-            "button2",
-            "button3",
-            "button4",
-            "button5",
-            "button6",
-            "button7",
-            "button8",
-            "button9",
-            "button10"
+            "WorkspaceButton1",
+            "WorkspaceButton2",
+            "WorkspaceButton3",
+            "WorkspaceButton4",
+            "WorkspaceButton5",
+            "WorkspaceButton6",
+            "WorkspaceButton7",
+            "WorkspaceButton8",
+            "WorkspaceButton9",
+            "WorkspaceButton10"
         );
 
         this.#widget = widget;

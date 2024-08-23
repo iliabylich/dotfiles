@@ -1,31 +1,30 @@
-import GObject from "gi://GObject?version=2.0";
-import Gtk from "gi://Gtk?version=4.0";
-import Gdk from "gi://Gdk?version=4.0";
 import { getWiFiStatus } from "../lib/NetworkManager.js";
+import loadTemplate from "../lib/loadTemplate.js";
 
-const WiFi = GObject.registerClass({
-    GTypeName: 'WiFi'
-}, class extends Gtk.Button {
+export default class WiFi {
+    #widget = null;
+    #label = null;
+
     constructor() {
-        super({
-            css_classes: ["network", "widget", "padded", "clickable"],
-            cursor: new Gdk.Cursor({ name: "pointer" }),
-            child: new Gtk.Label({
-                label: "",
-            })
+        const [widget, label] = loadTemplate("WiFi", "WiFiLabel");
+        this.#widget = widget;
+        this.#label = label;
+
+        this.#widget.connect("clicked", () => {
+            globalThis.app.toggleWindowByNamespace("Networks");
         })
 
         this.#refresh();
         setInterval(() => this.#refresh(), 1000);
     }
 
-    vfunc_clicked() {
-        globalThis.app.toggleWindowByNamespace("Networks");
+    get widget() {
+        return this.#widget;
     }
 
     #refresh() {
         const status = getWiFiStatus();
-        this.get_first_child().label = this.#formatLabel(status);
+        this.#label.label = this.#formatLabel(status);
     }
 
     #formatLabel(status) {
@@ -35,6 +34,4 @@ const WiFi = GObject.registerClass({
         const { ssid, strength } = status;
         return `${ssid || "Unknown"} (${strength}%) `
     }
-});
-
-export default WiFi;
+}

@@ -44,7 +44,7 @@ const TopBar = GObject.registerClass({
                         new Sound(),
                         new CPU(),
                         new RAM(),
-                        new WiFi(),
+                        new WiFi().widget,
                         new Clock({
                             format: "%H:%M:%S",
                             tooltipFormat: "%Y %B %e\n%A"
