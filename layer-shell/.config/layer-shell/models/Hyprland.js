@@ -1,7 +1,7 @@
 import Gio from "gi://Gio?version=2.0";
 import GLib from "gi://GLib?version=2.0";
 
-import execAsync from "./execAsync.js";
+import execAsync from "../lib/execAsync.js";
 
 const HYPRLAND_INSTANCE_SIGNATURE = GLib.getenv('HYPRLAND_INSTANCE_SIGNATURE');
 const XDG_RUNTIME_DIR = GLib.getenv('XDG_RUNTIME_DIR');

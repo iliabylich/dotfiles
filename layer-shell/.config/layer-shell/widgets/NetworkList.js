@@ -2,17 +2,20 @@ import GObject from "gi://GObject?version=2.0";
 import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
 
-import { getAllNetworks } from "../lib/NetworkManager.js";
+import NetworkManager from "../models/NetworkManager.js";
 import execAsync from "../lib/execAsync.js";
 
 const NetworkList = GObject.registerClass({
     GTypeName: 'NetworkList'
 }, class extends Gtk.Box {
+    #nm = null;
+
     constructor() {
         super({
             css_classes: ["widget-network-row-list"],
             orientation: Gtk.Orientation.VERTICAL,
         })
+        this.#nm = new NetworkManager();
 
         this.#render()
     }
@@ -41,7 +44,7 @@ const NetworkList = GObject.registerClass({
             this.remove(child);
         }
 
-        for (const network of getAllNetworks()) {
+        for (const network of this.#nm.allNetworks) {
             this.append(this.#networkRow(network))
         }
         this.append(this.#settingsRow())

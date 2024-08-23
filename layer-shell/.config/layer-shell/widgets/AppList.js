@@ -1,7 +1,7 @@
 import GObject from "gi://GObject?version=2.0";
 import Gtk from "gi://Gtk?version=4.0";
 import Pango from "gi://Pango?version=1.0";
-import AppListModel from "../lib/AppList.js";
+import AppListModel from "../models/AppList.js";
 
 const AppList = GObject.registerClass({
     GTypeName: 'AppList'

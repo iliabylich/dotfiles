@@ -1,14 +1,16 @@
-import { getWiFiStatus } from "../lib/NetworkManager.js";
+import NetworkManager from "../models/NetworkManager.js";
 import loadTemplate from "../lib/loadTemplate.js";
 
 export default class WiFi {
     #widget = null;
     #label = null;
+    #nm = null;
 
     constructor() {
         const [widget, label] = loadTemplate("WiFi", "WiFiLabel");
         this.#widget = widget;
         this.#label = label;
+        this.#nm = new NetworkManager();
 
         this.#widget.connect("clicked", () => {
             globalThis.app.toggleWindowByNamespace("Networks");
@@ -23,11 +25,11 @@ export default class WiFi {
     }
 
     #refresh() {
-        const status = getWiFiStatus();
-        this.#label.label = this.#formatLabel(status);
+        this.#label.label = this.#formattedLabel;
     }
 
-    #formatLabel(status) {
+    get #formattedLabel() {
+        const status = this.#nm.wifiStatus;
         if (!status) {
             return "Not connected";
         }

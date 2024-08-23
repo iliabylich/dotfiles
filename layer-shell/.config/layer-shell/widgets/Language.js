@@ -1,6 +1,6 @@
 import GObject from "gi://GObject?version=2.0";
 import Gtk from "gi://Gtk?version=4.0";
-import { subscribe } from "../lib/Hyprland.js";
+import { subscribe } from "../models/Hyprland.js";
 import execAsync from "../lib/execAsync.js";
 
 const mapping = {

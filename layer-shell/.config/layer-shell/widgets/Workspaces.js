@@ -1,4 +1,4 @@
-import { HyprlandWorkspaces } from "../lib/Hyprland.js";
+import { HyprlandWorkspaces } from "../models/Hyprland.js";
 import loadTemplate from "../lib/loadTemplate.js";
 
 export default class Workspaces {
