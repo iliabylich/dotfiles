@@ -16,15 +16,15 @@ export default class WiFi {
             globalThis.app.toggleWindowByNamespace("Networks");
         })
 
-        this.#refresh();
-        setInterval(() => this.#refresh(), 1000);
+        this.#render();
+        setInterval(() => this.#render(), 1000);
     }
 
     get widget() {
         return this.#widget;
     }
 
-    #refresh() {
+    #render() {
         this.#label.label = this.#formattedLabel;
     }
 
