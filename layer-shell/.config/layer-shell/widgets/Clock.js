@@ -1,6 +1,6 @@
 import GObject from 'gi://GObject?version=2.0';
 import Gtk from "gi://Gtk?version=4.0";
-import GLib from "gi://GLib?version=2.0";
+import ClockModel from '../models/Clock.js';
 
 const Clock = GObject.registerClass({
     GTypeName: 'Clock'
@@ -20,21 +20,14 @@ const Clock = GObject.registerClass({
         this.#format = format;
         this.#tooltipFormat = tooltipFormat;
 
-        this.#refresh()
-        setInterval(() => this.#refresh(), 1000);
+        new ClockModel({
+            onChange: (time) => this.#render(time)
+        });
     }
 
-    #refresh() {
-        const time = GLib.DateTime.new_now_local()
-        this.center_widget.label = this.#formatLabel(time);
-        this.center_widget.tooltip_text = this.#formatTooltipText(time);
-    }
-
-    #formatLabel(time) {
-        return time.format(this.#format)
-    }
-    #formatTooltipText(time) {
-        return time.format(this.#tooltipFormat)
+    #render(time) {
+        this.center_widget.label = time.format(this.#format);
+        this.center_widget.tooltip_text = time.format(this.#tooltipFormat);
     }
 });
 
