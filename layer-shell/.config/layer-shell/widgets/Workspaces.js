@@ -1,37 +1,31 @@
-import GObject from "gi://GObject?version=2.0";
-import Gtk from "gi://Gtk?version=4.0";
 import { HyprlandWorkspaces } from "../lib/Hyprland.js";
 import loadTemplate from "../lib/loadTemplate.js";
 
-const Workspaces = GObject.registerClass({
-    GTypeName: 'Workspaces'
-}, class extends Gtk.Box {
-    #buttons = [];
+export default class Workspaces {
+    #widget = null;
+    #buttons = null;
     #hyprland = null;
 
     constructor({ minWorkspaces }) {
-        super({
-            css_classes: ["workspaces", "widget"],
-        });
-
-        this.#buttons = loadTemplate(
+        const [widget, ...buttons] = loadTemplate(
             "Workspaces",
-            [
-                "button1",
-                "button2",
-                "button3",
-                "button4",
-                "button5",
-                "button6",
-                "button7",
-                "button8",
-                "button9",
-                "button10"
-            ]
+
+            "button1",
+            "button2",
+            "button3",
+            "button4",
+            "button5",
+            "button6",
+            "button7",
+            "button8",
+            "button9",
+            "button10"
         );
 
+        this.#widget = widget;
+        this.#buttons = buttons;
+
         this.#buttons.forEach((button, idx) => {
-            this.append(button);
             button.connect("clicked", () => this.#hyprland.goTo(idx + 1));
         });
 
@@ -41,6 +35,10 @@ const Workspaces = GObject.registerClass({
         });
     }
 
+    get widget() {
+        return this.#widget;
+    }
+
     #render(workspaces) {
         this.#buttons.forEach((button, idx) => {
             const { isVisible, isActive } = workspaces[idx];
@@ -48,6 +46,4 @@ const Workspaces = GObject.registerClass({
             button.set_css_classes(isActive ? ["active"] : ["inactive"]);
         })
     }
-});
-
-export default Workspaces;
+}

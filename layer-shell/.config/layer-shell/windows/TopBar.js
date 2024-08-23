@@ -34,7 +34,7 @@ const TopBar = GObject.registerClass({
                 start_widget: new BoxWithChildren({
                     spacing: 8,
                     children: [
-                        new Workspaces({ minWorkspaces: 5 })
+                        new Workspaces({ minWorkspaces: 5 }).widget
                     ]
                 }),
                 end_widget: new BoxWithChildren({
