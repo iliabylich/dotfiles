@@ -6,6 +6,75 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
 -->
 <interface>
   <requires lib="gtk" version="4.0"/>
+  <object class="GtkBox" id="CPU">
+    <style>
+      <class name="widget"/>
+      <class name="cpu"/>
+      <class name="padded"/>
+    </style>
+    <property name="spacing">3</property>
+    <property name="orientation">0</property>
+    <child>
+      <object class="GtkLabel" id="CPU1">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU2">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU3">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU4">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU5">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU6">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU7">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU8">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU9">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU10">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU11">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="CPU12">
+        <property name="use-markup">true</property>
+      </object>
+    </child>
+  </object>
   <object class="GtkCenterBox" id="Language">
     <style>
       <class name="widget"/>

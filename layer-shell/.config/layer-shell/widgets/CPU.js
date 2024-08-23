@@ -1,48 +1,47 @@
-import GObject from "gi://GObject?version=2.0";
-import Gtk from "gi://Gtk?version=4.0";
 import CPULoad from "../models/CPU.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
-const CPU = GObject.registerClass({
-    GTypeName: "CPU"
-}, class extends Gtk.Box {
-    #hasLabels = false
+export default class CPU {
+    #widget = null;
+    #labels = null;
 
     constructor() {
-        super({
-            css_classes: ["widget", "cpu", "padded"],
-            spacing: 3,
-            orientation: Gtk.Orientation.HORIZONTAL,
-        });
+        const [widget, ...labels] = loadWidgets(
+            "CPU",
+            "CPU1",
+            "CPU2",
+            "CPU3",
+            "CPU4",
+            "CPU5",
+            "CPU6",
+            "CPU7",
+            "CPU8",
+            "CPU9",
+            "CPU10",
+            "CPU11",
+            "CPU12",
+        );
+        this.#widget = widget;
+        this.#labels = labels;
 
         new CPULoad({
             onChange: (usage) => this.#render(usage)
         })
     }
 
-    #render(usage) {
-        if (this.#hasLabels) {
-            // re-render
-            let label = this.get_first_child();
-            let idx = 0;
-            while (label) {
-                label.label = indicator(usage[idx]);
-                label = label.get_next_sibling();
-                idx += 1;
-            }
-        } else {
-            // initial render
-            for (const load of usage) {
-                this.append(
-                    new Gtk.Label({
-                        label: indicator(load),
-                        use_markup: true
-                    })
-                )
-            }
-            this.#hasLabels = true;
-        }
+    get widget() {
+        return this.#widget;
     }
-});
+
+    #render(usage) {
+        if (usage.length !== this.#labels.length) {
+            throw new Error(`[CPU] got ${usage.length} CPUs for ${this.#labels.length} labels`);
+        }
+        usage.forEach((load, idx) => {
+            this.#labels[idx].label = indicator(load);
+        })
+    }
+}
 
 const INDICATORS = [
     "<span color='#FFFFFF'>▁</span>",
@@ -62,5 +61,3 @@ function indicator(load) {
     }
     return INDICATORS[idx]
 }
-
-export default CPU;

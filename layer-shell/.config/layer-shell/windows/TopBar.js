@@ -42,7 +42,7 @@ const TopBar = GObject.registerClass({
                     children: [
                         new Language().widget,
                         new Sound().widget,
-                        new CPU(),
+                        new CPU().widget,
                         new RAM().widget,
                         new WiFi().widget,
                         new Clock({
