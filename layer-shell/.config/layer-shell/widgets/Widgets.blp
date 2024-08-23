@@ -1,6 +1,16 @@
 using Gtk 4.0;
 using Gdk 4.0;
 
+CenterBox Clock {
+    styles ["clock", "widget", "padded"]
+
+    [center]
+    Label ClockLabel {
+        label: "";
+        tooltip-text: "";
+    }
+}
+
 Box CPU {
     styles ["widget", "cpu", "padded"]
 

@@ -6,6 +6,19 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
 -->
 <interface>
   <requires lib="gtk" version="4.0"/>
+  <object class="GtkCenterBox" id="Clock">
+    <style>
+      <class name="clock"/>
+      <class name="widget"/>
+      <class name="padded"/>
+    </style>
+    <child type="center">
+      <object class="GtkLabel" id="ClockLabel">
+        <property name="label"></property>
+        <property name="tooltip-text"></property>
+      </object>
+    </child>
+  </object>
   <object class="GtkBox" id="CPU">
     <style>
       <class name="widget"/>

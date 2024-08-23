@@ -48,7 +48,7 @@ const TopBar = GObject.registerClass({
                         new Clock({
                             format: "%H:%M:%S",
                             tooltipFormat: "%Y %B %e\n%A"
-                        }),
+                        }).widget,
                         new PowerButton().widget
                     ]
                 })
