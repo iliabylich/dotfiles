@@ -1,40 +1,29 @@
-import GObject from "gi://GObject?version=2.0";
-import Gtk from "gi://Gtk?version=4.0";
 import OutputSound from "../models/OutputSound.js";
+import loadTemplate from "../lib/loadTemplate.js";
 
-const Sound = GObject.registerClass({
-    GTypeName: 'Sound'
-}, class extends Gtk.Box {
+export default class Sound {
+    #widget = null;
     #icon = null;
     #scale = null;
     #output = null;
 
     constructor() {
-        super({
-            css_classes: ["widget", "sound", "padded"],
-            spacing: 10,
-            orientation: Gtk.Orientation.HORIZONTAL,
-        });
+        const [widget, icon, scale] = loadTemplate("Sound", "SoundImage", "SoundScale");
 
-        this.#icon = new Gtk.Image({
-            icon_name: "dialog-question",
-        });
-        this.#scale = new Gtk.Scale({
-            css_classes: ["sound-slider"],
-            adjustment: new Gtk.Adjustment({
-                lower: 0,
-                upper: 1
-            })
-        });
-        this.#scale.connect("change-value", () => {
-            this.#output.volume = Math.min(this.#scale.adjustment.value, 1);
-        })
-        this.append(this.#icon);
-        this.append(this.#scale);
-
+        this.#widget = widget;
+        this.#icon = icon;
+        this.#scale = scale;
         this.#output = new OutputSound({
             onChange: (volume) => this.#render(volume)
         })
+
+        this.#scale.connect("change-value", () => {
+            this.#output.volume = Math.min(this.#scale.adjustment.value, 1);
+        })
+    }
+
+    get widget() {
+        return this.#widget;
     }
 
     #outputIconName(volume) {
@@ -55,6 +44,4 @@ const Sound = GObject.registerClass({
         this.#scale.set_value(volume)
         this.#icon.icon_name = this.#outputIconName(volume)
     }
-});
-
-export default Sound;
+}

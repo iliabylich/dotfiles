@@ -6,6 +6,33 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
 -->
 <interface>
   <requires lib="gtk" version="4.0"/>
+  <object class="GtkBox" id="Sound">
+    <style>
+      <class name="widget"/>
+      <class name="sound"/>
+      <class name="padded"/>
+    </style>
+    <property name="spacing">10</property>
+    <property name="orientation">0</property>
+    <child>
+      <object class="GtkImage" id="SoundImage">
+        <property name="icon-name">dialog-question</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkScale" id="SoundScale">
+        <style>
+          <class name="sound-slider"/>
+        </style>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+  </object>
   <object class="GtkButton" id="WiFi">
     <style>
       <class name="network"/>

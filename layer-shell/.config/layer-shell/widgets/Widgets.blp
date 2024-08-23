@@ -1,6 +1,26 @@
 using Gtk 4.0;
 using Gdk 4.0;
 
+Box Sound {
+    styles ["widget", "sound", "padded"]
+
+    spacing: 10;
+    orientation: horizontal;
+
+    Image SoundImage {
+        icon-name: "dialog-question";
+    }
+
+    Scale SoundScale {
+        styles ["sound-slider"]
+
+        adjustment: Adjustment {
+            lower: 0;
+            upper: 1;
+        };
+    }
+}
+
 Button WiFi {
     styles ["network", "widget", "padded", "clickable"]
 

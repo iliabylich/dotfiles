@@ -41,7 +41,7 @@ const TopBar = GObject.registerClass({
                     spacing: 4,
                     children: [
                         new Language(),
-                        new Sound(),
+                        new Sound().widget,
                         new CPU(),
                         new RAM(),
                         new WiFi().widget,
