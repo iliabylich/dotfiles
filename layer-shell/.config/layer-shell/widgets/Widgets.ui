@@ -310,4 +310,68 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
   </object>
+  <object class="GtkWindow" id="LogoutScreen">
+    <style>
+      <class name="widget-logout"/>
+    </style>
+    <property name="visible">false</property>
+    <child>
+      <object class="GtkBox" id="Logout">
+        <style>
+          <class name="widget-logout-wrapper"/>
+        </style>
+        <property name="orientation">0</property>
+        <property name="homogeneous">true</property>
+        <property name="spacing">200</property>
+        <child>
+          <object class="GtkButton" id="LockButton">
+            <style>
+              <class name="widget-logout-button"/>
+            </style>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">Lock</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="RebootButton">
+            <style>
+              <class name="widget-logout-button"/>
+            </style>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">Reboot</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="ShutdownButton">
+            <style>
+              <class name="widget-logout-button"/>
+            </style>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">Shutdown</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="LogoutButton">
+            <style>
+              <class name="widget-logout-button"/>
+            </style>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">Logout</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

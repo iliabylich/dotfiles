@@ -4,15 +4,10 @@ import LayerShell from "gi://Gtk4LayerShell?version=1.0";
 
 import LayerWindow from '../lib/LayerWindow.js';
 import Logout from "../widgets/Logout.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
 export default function LogoutScreen({ application }) {
-    const widget = new Logout();
-
-    const window = new Gtk.Window({
-        css_classes: ["widget-logout"],
-        child: widget,
-        visible: false,
-    });
+    const [window] = loadWidgets("LogoutScreen");
     window.set_application(application);
     LayerWindow(window, {
         namespace: "LogoutScreen",
@@ -26,8 +21,10 @@ export default function LogoutScreen({ application }) {
         keyboard_mode: LayerShell.KeyboardMode.EXCLUSIVE,
     });
 
+    const widget = Logout();
+
     const ctrl = new Gtk.EventControllerKey();
-    ctrl.connect("key-pressed", (_self, keyval, keycode, _state) => {
+    ctrl.connect("key-pressed", (_self, keyval, _keycode, _state) => {
         widget.onKeyPress(Gdk.keyval_name(keyval));
     })
     window.add_controller(ctrl);

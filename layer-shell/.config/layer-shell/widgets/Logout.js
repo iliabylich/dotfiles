@@ -1,107 +1,100 @@
-import GObject from 'gi://GObject?version=2.0';
-import Gtk from "gi://Gtk?version=4.0";
-import execAsync from '../lib/execAsync.js';
+import execAsync from "../lib/execAsync.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
-const buttons = [
-    {
-        label: "Lock",
-        onclick: () => {
-            globalThis.app.toggleWindow("LogoutScreen");
-            execAsync(["hyprlock"])
-        }
+const actions = [
+    () => {
+        close();
+        execAsync(["hyprlock"])
     },
-    {
-        label: "Reboot",
-        onclick: () => {
-            globalThis.app.toggleWindow("LogoutScreen");
-            execAsync(["systemctl", "reboot"])
-        }
+    () => {
+        close();
+        execAsync(["systemctl", "reboot"])
     },
-    {
-        label: "Shutdown",
-        onclick: () => {
-            globalThis.app.toggleWindow("LogoutScreen");
-            execAsync(["systemctl", "poweroff"])
-        }
+    () => {
+        close();
+        execAsync(["systemctl", "poweroff"])
     },
-    {
-        label: "Logout",
-        onclick: () => {
-            globalThis.app.toggleWindow("LogoutScreen");
-            execAsync(["hyprctl", "dispatch", "exit"])
-        }
+    () => {
+        close();
+        execAsync(["hyprctl", "dispatch", "exit"])
     }
-];
+]
 
-const Logout = GObject.registerClass({
-    GTypeName: 'Logout'
-}, class extends Gtk.Box {
-    #activeId = 0;
-    #buttons = [];
+function close() {
+    globalThis.app.toggleWindow("LogoutScreen");
+}
 
-    constructor() {
-        super({
-            orientation: Gtk.Orientation.HORIZONTAL,
-            homogeneous: true,
-            spacing: 200,
-            css_classes: ["widget-logout-wrapper"],
-        });
+class Model {
+    #idx = 0;
+    #max = 4;
+    #onChange = null;
 
-        for (const config of buttons) {
-            const button = new Gtk.Button({
-                child: new Gtk.Label({ label: config.label }),
-                css_classes: ["widget-logout-button"]
-            });
-            button.connect("clicked", config.onclick);
-            this.#buttons.push(button);
-            this.append(button);
-        }
-
-        this.#render();
+    constructor({ max, onChange }) {
+        this.#max = max;
+        this.#onChange = onChange;
+        this.#changed();
     }
 
     reset() {
-        this.#activeId = 0;
-        this.#render();
+        this.#idx = 0;
+        this.#changed();
     }
 
-    onKeyPress(key) {
-        switch (key) {
-            case "Escape":
-                return this.#close();
-            case "Return":
-                return this.#chooseCurrent();
-            case "Left":
-                return this.#left();
-            case "Right":
-                return this.#right();
+    left() {
+        this.#idx = Math.max(0, this.#idx - 1);
+        this.#changed();
+    }
+    right() {
+        this.#idx = Math.min(this.#max - 1, this.#idx + 1);
+        this.#changed();
+    }
+
+    #changed() {
+        this.#onChange({ activeIdx: this.#idx });
+    }
+}
+
+export default function Logout() {
+    const buttons = loadWidgets(
+        "LockButton",
+        "RebootButton",
+        "ShutdownButton",
+        "LogoutButton",
+    );
+
+    if (buttons.length !== actions.length) {
+        const message = `[Logout] Different number of buttons and actions: ${buttons.length} vs ${actions.length}`;
+        console.error(message);
+        throw new Error(message);
+    }
+    buttons.forEach((button, idx) => {
+        button.connect("clicked", actions[idx]);
+    })
+
+    const model = new Model({
+        max: buttons.length,
+        onChange: ({ activeIdx }) => {
+            buttons.forEach((button, idx) => {
+                if (idx === activeIdx) {
+                    button.add_css_class("widget-logout-button-action");
+                } else {
+                    button.remove_css_class("widget-logout-button-action");
+                }
+            })
+        }
+    })
+
+    const keyBindings = {
+        "Escape": close,
+        "Left": () => model.left(),
+        "Right": () => model.right(),
+    }
+
+    return {
+        reset: () => model.reset(),
+        onKeyPress: (key) => {
+            const f = keyBindings[key];
+            if (f) f()
         }
     }
-
-    #close() {
-        globalThis.app.toggleWindow("LogoutScreen");
-    }
-
-    #chooseCurrent() { }
-
-    #left() {
-        this.#activeId = Math.max(0, this.#activeId - 1);
-        this.#render();
-    }
-    #right() {
-        this.#activeId = Math.min(buttons.length - 1, this.#activeId + 1);
-        this.#render();
-    }
-
-    #render() {
-        for (let i = 0; i < buttons.length; i++) {
-            if (i === this.#activeId) {
-                this.#buttons[i].add_css_class("widget-logout-button-action");
-            } else {
-                this.#buttons[i].remove_css_class("widget-logout-button-action");
-            }
-        }
-    }
-});
-
-export default Logout;
+}
