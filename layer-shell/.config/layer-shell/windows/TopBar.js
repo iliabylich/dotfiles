@@ -11,45 +11,32 @@ import Sound from '../widgets/Sound.js';
 import Language from '../widgets/Language.js';
 import Workspaces from '../widgets/Workspaces.js';
 
-export default class TopBar {
-    #window = null;
+export default function TopBar({ application }) {
+    const [window] = loadWidgets("TopBar");
+    window.set_application(application);
+    LayerWindow(window, {
+        namespace: "TopBar",
+        layer: LayerShell.Layer.OVERLAY,
+        anchors: [
+            LayerShell.Edge.TOP,
+            LayerShell.Edge.LEFT,
+            LayerShell.Edge.RIGHT
+        ],
+        margins: {
+            [LayerShell.Edge.TOP]: 0,
+        }
+    })
 
-    constructor({ application }) {
-        const [window] = loadWidgets("TopBar");
-        LayerWindow(window, {
-            namespace: "TopBar",
-            layer: LayerShell.Layer.OVERLAY,
-            anchors: [
-                LayerShell.Edge.TOP,
-                LayerShell.Edge.LEFT,
-                LayerShell.Edge.RIGHT
-            ],
-            margins: {
-                [LayerShell.Edge.TOP]: 0,
-            }
-        })
-        window.set_application(application);
+    Workspaces({ minWorkspaces: 5 });
+    Language();
+    Sound();
+    CPU();
+    RAM();
+    WiFi();
+    Clock({ format: "%H:%M:%S", tooltipFormat: "%Y %B %e\n%A" });
+    PowerButton();
 
-        Workspaces({ minWorkspaces: 5 });
-        Language();
-        Sound();
-        CPU();
-        RAM();
-        WiFi();
-        Clock({
-            format: "%H:%M:%S",
-            tooltipFormat: "%Y %B %e\n%A"
-        });
-        PowerButton();
+    window.present();
 
-        this.#window = window;
-
-        window.present();
-    }
-
-    get window() {
-        return this.#window;
-    }
-
-    prepareForShowing() { }
+    return { window, reset: () => { } }
 }

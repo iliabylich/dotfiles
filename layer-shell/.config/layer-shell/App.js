@@ -18,24 +18,24 @@ const App = GObject.registerClass({
     }
 
     toggleWindow(name) {
-        const window = this.#windows[name];
-        if (!window) {
+        if (!this.#windows[name]) {
             const message = `There is no window ${name}`;
             console.error(message);
             throw new Error(message);
         }
+        const { window, reset } = this.#windows[name];
         if (!window.get_visible()) {
-            window.prepareForShowing();
+            reset();
         }
         window.set_visible(!window.get_visible());
     }
 
     vfunc_activate() {
         this.#windows = {
-            TopBar: new TopBar({ application: this }),
-            LogoutScreen: new LogoutScreen({ application: this }),
-            Launcher: new Launcher({ application: this }),
-            Networks: new Networks({ application: this })
+            TopBar: TopBar({ application: this }),
+            LogoutScreen: LogoutScreen({ application: this }),
+            Launcher: Launcher({ application: this }),
+            Networks: Networks({ application: this })
         };
     }
 });
