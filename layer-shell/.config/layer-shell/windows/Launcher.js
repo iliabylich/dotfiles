@@ -8,21 +8,23 @@ import AppList from "../widgets/AppList.js";
 
 const Launcher = GObject.registerClass({
     GTypeName: 'Launcher'
-}, class extends LayerWindow {
+}, class extends Gtk.Window {
     #widget = null;
 
     constructor(options) {
         const widget = new AppList();
 
         super({
-            namespace: "Launcher",
-            layer: LayerShell.Layer.OVERLAY,
             css_classes: ["widget-launcher"],
-            keyboard_mode: LayerShell.KeyboardMode.EXCLUSIVE,
             child: widget,
             width_request: 700,
             ...options
         });
+        LayerWindow(this, {
+            namespace: "Launcher",
+            layer: LayerShell.Layer.OVERLAY,
+            keyboard_mode: LayerShell.KeyboardMode.EXCLUSIVE,
+        })
 
         this.#widget = widget;
 

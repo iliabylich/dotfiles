@@ -16,6 +16,6 @@ export default function WiFi() {
     });
 
     widget.connect("clicked", () => {
-        globalThis.app.toggleWindowByNamespace("Networks");
+        globalThis.app.toggleWindow("Networks");
     })
 }

@@ -4,6 +4,6 @@ export default function PowerButton() {
     const [widget] = loadWidgets("PowerButton");
 
     widget.connect("clicked", () => {
-        globalThis.app.toggleWindowByNamespace("LogoutScreen");
+        globalThis.app.toggleWindow("LogoutScreen");
     })
 }

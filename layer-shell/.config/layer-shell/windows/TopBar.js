@@ -1,9 +1,6 @@
-import GObject from 'gi://GObject?version=2.0';
-import Gtk from "gi://Gtk?version=4.0";
 import LayerShell from "gi://Gtk4LayerShell?version=1.0";
 
-// import LayerWindow from '../lib/LayerWindow.js';
-import BoxWithChildren from '../lib/BoxWithChildren.js';
+import LayerWindow from '../lib/LayerWindow.js';
 import loadWidgets from '../lib/loadWidgets.js';
 import PowerButton from '../widgets/PowerButton.js';
 import Clock from '../widgets/Clock.js';
@@ -13,37 +10,6 @@ import CPU from '../widgets/CPU.js';
 import Sound from '../widgets/Sound.js';
 import Language from '../widgets/Language.js';
 import Workspaces from '../widgets/Workspaces.js';
-
-function LayerWindow(window, {
-    layer = LayerShell.Layer.OVERLAY,
-    auto_exclusive_zone_enabled = false,
-    anchors = [],
-    margins = {},
-    child = null,
-    namespace = null,
-    keyboard_mode = null
-}) {
-    LayerShell.init_for_window(window);
-    LayerShell.set_layer(window, layer);
-    if (auto_exclusive_zone_enabled) {
-        LayerShell.auto_exclusive_zone_enable(window);
-    }
-    for (const anchor of anchors) {
-        LayerShell.set_anchor(window, anchor, true);
-    }
-    for (const key in margins) {
-        LayerShell.set_margin(window, key, margins[key]);
-    }
-    if (child) {
-        window.child = child;
-    }
-    if (namespace) {
-        LayerShell.set_namespace(window, namespace);
-    }
-    if (keyboard_mode) {
-        LayerShell.set_keyboard_mode(window, keyboard_mode);
-    }
-}
 
 export default class TopBar {
     #window = null;
@@ -78,6 +44,7 @@ export default class TopBar {
 
         this.#window = window;
 
+        window.present();
     }
 
     get window() {

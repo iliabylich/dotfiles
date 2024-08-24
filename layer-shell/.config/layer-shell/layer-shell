@@ -8,9 +8,9 @@ MESSAGES="$HOME/.config/layer-shell/.messages"
 
 function printUsageAndExit() {
     echo "Usage: "
-    echo "  layer-shell start                    -- starts layer shell"
-    echo "  layer-shell toggle <WindowNamespace> -- toggles given window"
-    echo "  layer-shell stop                     -- stops running shell"
+    echo "  layer-shell start               -- starts layer shell"
+    echo "  layer-shell toggle <WindowName> -- toggles given window"
+    echo "  layer-shell stop                -- stops running shell"
     exit 1
 }
 
@@ -28,7 +28,7 @@ case "$1" in
         if (( $# != 2 )); then
             printUsageAndExit
         fi
-        message "{\"type\": \"toggleWindow\", \"namespace\": \"$2\"}"
+        message "{\"type\": \"toggleWindow\", \"name\": \"$2\"}"
 
         ;;
 

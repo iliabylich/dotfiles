@@ -30,7 +30,7 @@ const NetworkList = GObject.registerClass({
     }
 
     #close() {
-        globalThis.app.toggleWindowByNamespace("Networks");
+        globalThis.app.toggleWindow("Networks");
     }
 
     #render() {

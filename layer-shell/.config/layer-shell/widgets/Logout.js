@@ -6,28 +6,28 @@ const buttons = [
     {
         label: "Lock",
         onclick: () => {
-            globalThis.app.toggleWindowByNamespace("LogoutScreen");
+            globalThis.app.toggleWindow("LogoutScreen");
             execAsync(["hyprlock"])
         }
     },
     {
         label: "Reboot",
         onclick: () => {
-            globalThis.app.toggleWindowByNamespace("LogoutScreen");
+            globalThis.app.toggleWindow("LogoutScreen");
             execAsync(["systemctl", "reboot"])
         }
     },
     {
         label: "Shutdown",
         onclick: () => {
-            globalThis.app.toggleWindowByNamespace("LogoutScreen");
+            globalThis.app.toggleWindow("LogoutScreen");
             execAsync(["systemctl", "poweroff"])
         }
     },
     {
         label: "Logout",
         onclick: () => {
-            globalThis.app.toggleWindowByNamespace("LogoutScreen");
+            globalThis.app.toggleWindow("LogoutScreen");
             execAsync(["hyprctl", "dispatch", "exit"])
         }
     }
@@ -79,7 +79,7 @@ const Logout = GObject.registerClass({
     }
 
     #close() {
-        globalThis.app.toggleWindowByNamespace("LogoutScreen");
+        globalThis.app.toggleWindow("LogoutScreen");
     }
 
     #chooseCurrent() { }

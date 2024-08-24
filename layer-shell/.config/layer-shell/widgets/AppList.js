@@ -113,7 +113,7 @@ const AppList = GObject.registerClass({
     }
 
     #close() {
-        globalThis.app.toggleWindowByNamespace("Launcher");
+        globalThis.app.toggleWindow("Launcher");
     }
 });
 

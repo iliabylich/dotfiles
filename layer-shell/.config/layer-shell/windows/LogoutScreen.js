@@ -8,13 +8,20 @@ import Logout from "../widgets/Logout.js";
 
 const LogoutScreen = GObject.registerClass({
     GTypeName: 'LogoutScreen'
-}, class extends LayerWindow {
+}, class extends Gtk.Window {
     #widget = null;
 
     constructor(options) {
         const widget = new Logout();
 
         super({
+            css_classes: ["widget-logout"],
+            child: widget,
+            visible: false,
+            ...options
+        });
+
+        LayerWindow(this, {
             namespace: "LogoutScreen",
             layer: LayerShell.Layer.OVERLAY,
             anchors: [
@@ -23,13 +30,7 @@ const LogoutScreen = GObject.registerClass({
                 LayerShell.Edge.BOTTOM,
                 LayerShell.Edge.LEFT,
             ],
-            margins: {
-            },
-            css_classes: ["widget-logout"],
             keyboard_mode: LayerShell.KeyboardMode.EXCLUSIVE,
-            child: widget,
-            visible: false,
-            ...options
         });
 
         this.#widget = widget;

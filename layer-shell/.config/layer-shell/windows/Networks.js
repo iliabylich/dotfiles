@@ -8,16 +8,22 @@ import NetworkList from "../widgets/NetworkList.js";
 
 const Networks = GObject.registerClass({
     GTypeName: 'Networks'
-}, class extends LayerWindow {
+}, class extends Gtk.Window {
     #widget = null;
 
     constructor(options) {
         const widget = new NetworkList();
 
         super({
+            css_classes: ["widget-network"],
+            child: widget,
+            width_request: 700,
+            ...options
+        });
+
+        LayerWindow(this, {
             namespace: "Networks",
             layer: LayerShell.Layer.OVERLAY,
-            css_classes: ["widget-network"],
             anchors: [
                 LayerShell.Edge.TOP,
                 LayerShell.Edge.RIGHT,
@@ -26,10 +32,7 @@ const Networks = GObject.registerClass({
                 [LayerShell.Edge.TOP]: 50
             },
             keyboard_mode: LayerShell.KeyboardMode.EXCLUSIVE,
-            child: widget,
-            width_request: 700,
-            ...options
-        });
+        })
 
         this.#widget = widget;
 

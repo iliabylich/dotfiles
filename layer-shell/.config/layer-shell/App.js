@@ -9,8 +9,7 @@ import Networks from "./windows/Networks.js";
 const App = GObject.registerClass({
     GTypeName: 'App'
 }, class extends Gtk.Application {
-    topBar = null;
-    logoutScreen = null;
+    #windows = {}
 
     constructor(options) {
         super(options);
@@ -18,31 +17,26 @@ const App = GObject.registerClass({
         globalThis.app = this;
     }
 
-    toggleWindowByNamespace(namespace) {
-        const w = this.get_windows().find(w => w.namespace === namespace);
-        if (!w) {
-            const message = `Can't find window with namespace ${namespace}`
+    toggleWindow(name) {
+        const window = this.#windows[name];
+        if (!window) {
+            const message = `There is no window ${name}`;
             console.error(message);
             throw new Error(message);
         }
-        if (!w.get_visible()) {
-            w.prepareForShowing();
+        if (!window.get_visible()) {
+            window.prepareForShowing();
         }
-        w.set_visible(!w.get_visible());
+        window.set_visible(!window.get_visible());
     }
 
     vfunc_activate() {
-        this.topBar = new TopBar({ application: this }).window;
-        this.topBar.present()
-
-        this.logoutScreen = new LogoutScreen({ application: this });
-        // this.logoutScreen.present()
-
-        this.launcher = new Launcher({ application: this });
-        // this.launcher.present();
-
-        this.networks = new Networks({ application: this });
-        // this.networks.present();
+        this.#windows = {
+            TopBar: new TopBar({ application: this }),
+            LogoutScreen: new LogoutScreen({ application: this }),
+            Launcher: new Launcher({ application: this }),
+            Networks: new Networks({ application: this })
+        };
     }
 });
 

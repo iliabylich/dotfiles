@@ -22,7 +22,7 @@ function readAndProcessOneMessage(app) {
                     break;
                 }
                 case "toggleWindow": {
-                    app.toggleWindowByNamespace(message.namespace);
+                    app.toggleWindow(message.name);
                     break;
                 }
                 default: {
