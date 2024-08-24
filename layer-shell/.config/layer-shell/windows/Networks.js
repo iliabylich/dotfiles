@@ -1,10 +1,9 @@
-import Gtk from "gi://Gtk?version=4.0";
-import Gdk from "gi://Gdk?version=4.0";
 import LayerShell from "gi://Gtk4LayerShell?version=1.0";
 
 import LayerWindow from '../lib/LayerWindow.js';
 import NetworkList from "../widgets/NetworkList.js";
 import loadWidgets from "../lib/loadWidgets.js"
+import keybindings from "../lib/keybindings.js";
 
 export default function Networks({ application }) {
     const [window] = loadWidgets("Networks");
@@ -23,14 +22,11 @@ export default function Networks({ application }) {
     });
     const widget = NetworkList();
 
-    const ctrl = new Gtk.EventControllerKey();
-    ctrl.connect("key-pressed", (_self, keyval, _keycode, _state) => {
-        const key = Gdk.keyval_name(keyval);
-        if (key === "Escape") {
-            application.toggleWindow("Networks");
-        }
-    })
-    window.add_controller(ctrl);
+    keybindings(
+        window,
+        { "Escape": () => application.toggleWindow("Networks") },
+        (_otherKey) => { }
+    )
 
     return { window, reset: () => widget.reset() }
 }
