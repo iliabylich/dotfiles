@@ -42,7 +42,6 @@ Window TopBar {
 
             Box Sound {
                 styles ["widget", "sound", "padded"]
-
                 spacing: 10;
                 orientation: horizontal;
 
@@ -52,7 +51,6 @@ Window TopBar {
 
                 Scale SoundScale {
                     styles ["sound-slider"]
-
                     adjustment: Adjustment {
                         lower: 0;
                         upper: 1;
@@ -62,7 +60,6 @@ Window TopBar {
 
             Box CPU {
                 styles ["widget", "cpu", "padded"]
-
                 spacing: 3;
                 orientation: horizontal;
 
@@ -90,10 +87,7 @@ Window TopBar {
 
             Button WiFi {
                 styles ["network", "widget", "padded", "clickable"]
-
-                cursor: Gdk.Cursor {
-                    name: "pointer";
-                };
+                cursor: Gdk.Cursor { name: "pointer"; };
 
                 Label WiFiLabel {
                     label: "";
@@ -112,10 +106,7 @@ Window TopBar {
 
             Button PowerButton {
                 styles ["power", "widget", "padded", "clickable"]
-
-                cursor: Gdk.Cursor {
-                    name: "pointer";
-                };
+                cursor: Gdk.Cursor { name: "pointer"; };
 
                 Label {
                     label: "      ";
@@ -127,12 +118,10 @@ Window TopBar {
 
 Window LogoutScreen {
     styles ["widget-logout"]
-
     visible: false;
 
     Box Logout {
         styles ["widget-logout-wrapper"]
-
         orientation: horizontal;
         homogeneous: true;
         spacing: 200;
@@ -155,6 +144,192 @@ Window LogoutScreen {
         Button LogoutButton {
             styles ["widget-logout-button"]
             Label { label: "Logout"; }
+        }
+    }
+}
+
+Window Networks {
+    styles ["widget-network"]
+    visible: false;
+    width-request: 700;
+
+    Box {
+        styles ["widget-network-row-list"]
+        orientation: vertical;
+
+        CenterBox Network1Row {
+            styles ["widget-network-clickable", "widget-network-row"]
+            orientation: horizontal;
+            halign: fill;
+
+            [start]
+            Label {
+                label: "-";
+                justify: left;
+                xalign: 0;
+            }
+
+            [end]
+            Box {
+                styles ["widget-network-icon-box"]
+                halign: end;
+
+                Image {
+                    icon-name: "edit-copy";
+                    icon-size: large;
+                    pixel-size: 30;
+                }
+            }
+        }
+
+        CenterBox Network2Row {
+            styles ["widget-network-clickable", "widget-network-row"]
+            orientation: horizontal;
+            halign: fill;
+
+            [start]
+            Label {
+                label: "-";
+                justify: left;
+                xalign: 0;
+            }
+
+            [end]
+            Box {
+                styles ["widget-network-icon-box"]
+                halign: end;
+
+                Image {
+                    icon-name: "edit-copy";
+                    icon-size: large;
+                    pixel-size: 30;
+                }
+            }
+        }
+
+        CenterBox Network3Row {
+            styles ["widget-network-clickable", "widget-network-row"]
+            orientation: horizontal;
+            halign: fill;
+
+            [start]
+            Label {
+                label: "-";
+                justify: left;
+                xalign: 0;
+            }
+
+            [end]
+            Box {
+                styles ["widget-network-icon-box"]
+                halign: end;
+
+                Image {
+                    icon-name: "edit-copy";
+                    icon-size: large;
+                    pixel-size: 30;
+                }
+            }
+        }
+
+        CenterBox Network4Row {
+            styles ["widget-network-clickable", "widget-network-row"]
+            orientation: horizontal;
+            halign: fill;
+
+            [start]
+            Label {
+                label: "-";
+                justify: left;
+                xalign: 0;
+            }
+
+            [end]
+            Box {
+                styles ["widget-network-icon-box"]
+                halign: end;
+
+                Image {
+                    icon-name: "edit-copy";
+                    icon-size: large;
+                    pixel-size: 30;
+                }
+            }
+        }
+
+        CenterBox Network5Row {
+            styles ["widget-network-clickable", "widget-network-row"]
+            orientation: horizontal;
+            halign: fill;
+
+            [start]
+            Label {
+                label: "-";
+                justify: left;
+                xalign: 0;
+            }
+
+            [end]
+            Box {
+                styles ["widget-network-icon-box"]
+                halign: end;
+
+                Image {
+                    icon-name: "edit-copy";
+                    icon-size: large;
+                    pixel-size: 30;
+                }
+            }
+        }
+
+        CenterBox NetworkSettingsRow {
+            styles ["widget-network-clickable", "widget-network-row"]
+            orientation: horizontal;
+            halign: fill;
+
+            [start]
+            Label {
+                label: "Settings (nmtui)";
+                justify: left;
+                xalign: 0;
+            }
+
+            [end]
+            Box {
+                styles ["widget-network-icon-box"]
+                halign: end;
+
+                Image {
+                    icon-name: "preferences-system-network";
+                    icon-size: large;
+                    pixel-size: 30;
+                }
+            }
+        }
+
+        CenterBox NetworkExitRow {
+            styles ["widget-network-clickable", "widget-network-row"]
+            orientation: horizontal;
+            halign: fill;
+
+            [start]
+            Label {
+                label: "Close";
+                justify: left;
+                xalign: 0;
+            }
+
+            [end]
+            Box {
+                styles ["widget-network-icon-box"]
+                halign: end;
+
+                Image {
+                    icon-name: "window-close";
+                    icon-size: large;
+                    pixel-size: 30;
+                }
+            }
         }
     }
 }

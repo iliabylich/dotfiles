@@ -374,4 +374,243 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
   </object>
+  <object class="GtkWindow" id="Networks">
+    <style>
+      <class name="widget-network"/>
+    </style>
+    <property name="visible">false</property>
+    <property name="width-request">700</property>
+    <child>
+      <object class="GtkBox">
+        <style>
+          <class name="widget-network-row-list"/>
+        </style>
+        <property name="orientation">1</property>
+        <child>
+          <object class="GtkCenterBox" id="Network1Row">
+            <style>
+              <class name="widget-network-clickable"/>
+              <class name="widget-network-row"/>
+            </style>
+            <property name="orientation">0</property>
+            <property name="halign">0</property>
+            <child type="start">
+              <object class="GtkLabel">
+                <property name="label">-</property>
+                <property name="justify">0</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox">
+                <style>
+                  <class name="widget-network-icon-box"/>
+                </style>
+                <property name="halign">2</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">edit-copy</property>
+                    <property name="icon-size">2</property>
+                    <property name="pixel-size">30</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCenterBox" id="Network2Row">
+            <style>
+              <class name="widget-network-clickable"/>
+              <class name="widget-network-row"/>
+            </style>
+            <property name="orientation">0</property>
+            <property name="halign">0</property>
+            <child type="start">
+              <object class="GtkLabel">
+                <property name="label">-</property>
+                <property name="justify">0</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox">
+                <style>
+                  <class name="widget-network-icon-box"/>
+                </style>
+                <property name="halign">2</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">edit-copy</property>
+                    <property name="icon-size">2</property>
+                    <property name="pixel-size">30</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCenterBox" id="Network3Row">
+            <style>
+              <class name="widget-network-clickable"/>
+              <class name="widget-network-row"/>
+            </style>
+            <property name="orientation">0</property>
+            <property name="halign">0</property>
+            <child type="start">
+              <object class="GtkLabel">
+                <property name="label">-</property>
+                <property name="justify">0</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox">
+                <style>
+                  <class name="widget-network-icon-box"/>
+                </style>
+                <property name="halign">2</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">edit-copy</property>
+                    <property name="icon-size">2</property>
+                    <property name="pixel-size">30</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCenterBox" id="Network4Row">
+            <style>
+              <class name="widget-network-clickable"/>
+              <class name="widget-network-row"/>
+            </style>
+            <property name="orientation">0</property>
+            <property name="halign">0</property>
+            <child type="start">
+              <object class="GtkLabel">
+                <property name="label">-</property>
+                <property name="justify">0</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox">
+                <style>
+                  <class name="widget-network-icon-box"/>
+                </style>
+                <property name="halign">2</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">edit-copy</property>
+                    <property name="icon-size">2</property>
+                    <property name="pixel-size">30</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCenterBox" id="Network5Row">
+            <style>
+              <class name="widget-network-clickable"/>
+              <class name="widget-network-row"/>
+            </style>
+            <property name="orientation">0</property>
+            <property name="halign">0</property>
+            <child type="start">
+              <object class="GtkLabel">
+                <property name="label">-</property>
+                <property name="justify">0</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox">
+                <style>
+                  <class name="widget-network-icon-box"/>
+                </style>
+                <property name="halign">2</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">edit-copy</property>
+                    <property name="icon-size">2</property>
+                    <property name="pixel-size">30</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCenterBox" id="NetworkSettingsRow">
+            <style>
+              <class name="widget-network-clickable"/>
+              <class name="widget-network-row"/>
+            </style>
+            <property name="orientation">0</property>
+            <property name="halign">0</property>
+            <child type="start">
+              <object class="GtkLabel">
+                <property name="label">Settings (nmtui)</property>
+                <property name="justify">0</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox">
+                <style>
+                  <class name="widget-network-icon-box"/>
+                </style>
+                <property name="halign">2</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">preferences-system-network</property>
+                    <property name="icon-size">2</property>
+                    <property name="pixel-size">30</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCenterBox" id="NetworkExitRow">
+            <style>
+              <class name="widget-network-clickable"/>
+              <class name="widget-network-row"/>
+            </style>
+            <property name="orientation">0</property>
+            <property name="halign">0</property>
+            <child type="start">
+              <object class="GtkLabel">
+                <property name="label">Close</property>
+                <property name="justify">0</property>
+                <property name="xalign">0</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkBox">
+                <style>
+                  <class name="widget-network-icon-box"/>
+                </style>
+                <property name="halign">2</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">window-close</property>
+                    <property name="icon-size">2</property>
+                    <property name="pixel-size">30</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

@@ -4,15 +4,10 @@ import LayerShell from "gi://Gtk4LayerShell?version=1.0";
 
 import LayerWindow from '../lib/LayerWindow.js';
 import NetworkList from "../widgets/NetworkList.js";
+import loadWidgets from "../lib/loadWidgets.js"
 
 export default function Networks({ application }) {
-    const widget = new NetworkList();
-
-    const window = new Gtk.Window({
-        css_classes: ["widget-network"],
-        child: widget,
-        width_request: 700,
-    });
+    const [window] = loadWidgets("Networks");
     window.set_application(application);
     LayerWindow(window, {
         namespace: "Networks",
@@ -25,7 +20,8 @@ export default function Networks({ application }) {
             [LayerShell.Edge.TOP]: 50
         },
         keyboard_mode: LayerShell.KeyboardMode.EXCLUSIVE,
-    })
+    });
+    const widget = NetworkList();
 
     const ctrl = new Gtk.EventControllerKey();
     ctrl.connect("key-pressed", (_self, keyval, _keycode, _state) => {
