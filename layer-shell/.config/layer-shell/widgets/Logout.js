@@ -85,7 +85,6 @@ export default function Logout() {
     })
 
     const keyBindings = {
-        "Escape": close,
         "Left": () => model.left(),
         "Right": () => model.right(),
     }

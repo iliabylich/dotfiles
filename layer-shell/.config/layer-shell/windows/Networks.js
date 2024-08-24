@@ -25,7 +25,10 @@ export default function Networks({ application }) {
 
     const ctrl = new Gtk.EventControllerKey();
     ctrl.connect("key-pressed", (_self, keyval, _keycode, _state) => {
-        widget.onKeyPress(Gdk.keyval_name(keyval));
+        const key = Gdk.keyval_name(keyval);
+        if (key === "Escape") {
+            application.toggleWindow("Networks");
+        }
     })
     window.add_controller(ctrl);
 

@@ -25,7 +25,12 @@ export default function LogoutScreen({ application }) {
 
     const ctrl = new Gtk.EventControllerKey();
     ctrl.connect("key-pressed", (_self, keyval, _keycode, _state) => {
-        widget.onKeyPress(Gdk.keyval_name(keyval));
+        const key = Gdk.keyval_name(keyval);
+        if (key === "Escape") {
+            application.toggleWindow("LogoutScreen");
+        } else {
+            widget.onKeyPress(key);
+        }
     })
     window.add_controller(ctrl);
 

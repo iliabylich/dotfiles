@@ -65,15 +65,5 @@ export default function NetworkList() {
 
     syncUI();
 
-    const keyBindings = {
-        "Escape": close
-    };
-
-    return {
-        reset: () => syncUI(),
-        onKeyPress: (key) => {
-            const f = keyBindings[key];
-            if (f) f()
-        }
-    }
+    return { reset: () => syncUI() }
 }
