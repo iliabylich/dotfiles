@@ -2,29 +2,16 @@ import execAsync from "../lib/execAsync.js";
 import Memory from "../models/Memory.js";
 import loadWidgets from "../lib/loadWidgets.js";
 
-export default class RAM {
-    #widget = null;
-    #label = null;
+export default function RAM() {
+    const [widget, label] = loadWidgets("RAM", "RAMLabel");
 
-    constructor() {
-        const [widget, label] = loadWidgets("RAM", "RAMLabel");
-        this.#widget = widget;
-        this.#label = label;
+    new Memory({
+        onChange: ({ total, used }) => {
+            label.label = `RAM ${used.toFixed(1)}G/${total.toFixed(1)}G`
+        }
+    });
 
-        new Memory({
-            onChange: (memory) => this.#refresh(memory)
-        });
-
-        this.#widget.connect("clicked", () => {
-            execAsync(["gnome-system-monitor"]);
-        })
-    }
-
-    get widget() {
-        return this.#widget;
-    }
-
-    #refresh({ total, used }) {
-        this.#label.label = `RAM ${used.toFixed(1)}G/${total.toFixed(1)}G`
-    }
+    widget.connect("clicked", () => {
+        execAsync(["gnome-system-monitor"]);
+    })
 }

@@ -1,157 +1,126 @@
 using Gtk 4.0;
 using Gdk 4.0;
 
-CenterBox Clock {
-    styles ["clock", "widget", "padded"]
+Window TopBar {
+    styles ["bar"]
 
-    [center]
-    Label ClockLabel {
-        label: "";
-        tooltip-text: "";
-    }
-}
+    CenterBox {
+        styles ["main-wrapper"]
 
-Box CPU {
-    styles ["widget", "cpu", "padded"]
+        [start]
+        Box {
+            spacing: 8;
 
-    spacing: 3;
-    orientation: horizontal;
+            Box Workspaces {
+                styles ["workspaces", "widget"]
 
-    Label CPU1  { use-markup: true; }
-    Label CPU2  { use-markup: true; }
-    Label CPU3  { use-markup: true; }
-    Label CPU4  { use-markup: true; }
-    Label CPU5  { use-markup: true; }
-    Label CPU6  { use-markup: true; }
-    Label CPU7  { use-markup: true; }
-    Label CPU8  { use-markup: true; }
-    Label CPU9  { use-markup: true; }
-    Label CPU10 { use-markup: true; }
-    Label CPU11 { use-markup: true; }
-    Label CPU12 { use-markup: true; }
-}
-
-CenterBox Language {
-    styles ["widget", "language", "padded"]
-
-    [center]
-    Label LanguageLabel {
-        label: "??";
-    }
-}
-
-Button PowerButton {
-    styles ["power", "widget", "padded", "clickable"]
-
-    cursor: Gdk.Cursor {
-        name: "pointer";
-    };
-
-    Label {
-        label: "      ";
-    }
-}
-
-Button RAM {
-    styles ["widget", "memory", "padded", "clickable"]
-
-    Label RAMLabel {
-        label: "";
-    }
-}
-
-Box Sound {
-    styles ["widget", "sound", "padded"]
-
-    spacing: 10;
-    orientation: horizontal;
-
-    Image SoundImage {
-        icon-name: "dialog-question";
-    }
-
-    Scale SoundScale {
-        styles ["sound-slider"]
-
-        adjustment: Adjustment {
-            lower: 0;
-            upper: 1;
-        };
-    }
-}
-
-Button WiFi {
-    styles ["network", "widget", "padded", "clickable"]
-
-    cursor: Gdk.Cursor {
-        name: "pointer";
-    };
-
-    Label WiFiLabel {
-        label: "";
-    }
-}
-
-Box Workspaces {
-    styles ["workspaces", "widget"]
-
-    Button WorkspaceButton1 {
-        Label {
-            label: "1";
+                Button WorkspaceButton1  { Label { label: "1";  } }
+                Button WorkspaceButton2  { Label { label: "2";  } }
+                Button WorkspaceButton3  { Label { label: "3";  } }
+                Button WorkspaceButton4  { Label { label: "4";  } }
+                Button WorkspaceButton5  { Label { label: "5";  } }
+                Button WorkspaceButton6  { Label { label: "6";  } }
+                Button WorkspaceButton7  { Label { label: "7";  } }
+                Button WorkspaceButton8  { Label { label: "8";  } }
+                Button WorkspaceButton9  { Label { label: "9";  } }
+                Button WorkspaceButton10 { Label { label: "10"; } }
+            }
         }
-    }
 
-    Button WorkspaceButton2 {
-        Label {
-            label: "2";
-        }
-    }
+        [end]
+        Box {
+            spacing: 4;
 
-    Button WorkspaceButton3 {
-        Label {
-            label: "3";
-        }
-    }
+            CenterBox Language {
+                styles ["widget", "language", "padded"]
 
-    Button WorkspaceButton4 {
-        Label {
-            label: "4";
-        }
-    }
+                [center]
+                Label LanguageLabel {
+                    label: "??";
+                }
+            }
 
-    Button WorkspaceButton5 {
-        Label {
-            label: "5";
-        }
-    }
+            Box Sound {
+                styles ["widget", "sound", "padded"]
 
-    Button WorkspaceButton6 {
-        Label {
-            label: "6";
-        }
-    }
+                spacing: 10;
+                orientation: horizontal;
 
-    Button WorkspaceButton7 {
-        Label {
-            label: "7";
-        }
-    }
+                Image SoundImage {
+                    icon-name: "dialog-question";
+                }
 
-    Button WorkspaceButton8 {
-        Label {
-            label: "8";
-        }
-    }
+                Scale SoundScale {
+                    styles ["sound-slider"]
 
-    Button WorkspaceButton9 {
-        Label {
-            label: "9";
-        }
-    }
+                    adjustment: Adjustment {
+                        lower: 0;
+                        upper: 1;
+                    };
+                }
+            }
 
-    Button WorkspaceButton10 {
-        Label {
-            label: "10";
+            Box CPU {
+                styles ["widget", "cpu", "padded"]
+
+                spacing: 3;
+                orientation: horizontal;
+
+                Label CPU1  { use-markup: true; }
+                Label CPU2  { use-markup: true; }
+                Label CPU3  { use-markup: true; }
+                Label CPU4  { use-markup: true; }
+                Label CPU5  { use-markup: true; }
+                Label CPU6  { use-markup: true; }
+                Label CPU7  { use-markup: true; }
+                Label CPU8  { use-markup: true; }
+                Label CPU9  { use-markup: true; }
+                Label CPU10 { use-markup: true; }
+                Label CPU11 { use-markup: true; }
+                Label CPU12 { use-markup: true; }
+            }
+
+            Button RAM {
+                styles ["widget", "memory", "padded", "clickable"]
+
+                Label RAMLabel {
+                    label: "";
+                }
+            }
+
+            Button WiFi {
+                styles ["network", "widget", "padded", "clickable"]
+
+                cursor: Gdk.Cursor {
+                    name: "pointer";
+                };
+
+                Label WiFiLabel {
+                    label: "";
+                }
+            }
+
+            CenterBox Clock {
+                styles ["clock", "widget", "padded"]
+
+                [center]
+                Label ClockLabel {
+                    label: "";
+                    tooltip-text: "";
+                }
+            }
+
+            Button PowerButton {
+                styles ["power", "widget", "padded", "clickable"]
+
+                cursor: Gdk.Cursor {
+                    name: "pointer";
+                };
+
+                Label {
+                    label: "      ";
+                }
+            }
         }
     }
 }

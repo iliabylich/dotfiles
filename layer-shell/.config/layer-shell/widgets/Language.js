@@ -6,25 +6,10 @@ const mapping = {
     "Polish": "PL",
 };
 
-export default class Language {
-    #widget = null;
-    #label = null;
+export default function Language() {
+    const [label] = loadWidgets("LanguageLabel");
 
-    constructor() {
-        const [widget, label] = loadWidgets("Language", "LanguageLabel");
-        this.#widget = widget;
-        this.#label = label;
-
-        new HyprlandLanguage({
-            onChange: (layout) => this.#render(layout)
-        })
-    }
-
-    get widget() {
-        return this.#widget;
-    }
-
-    #render(layout) {
-        this.#label.label = mapping[layout];
-    }
+    new HyprlandLanguage({
+        onChange: (layout) => label.label = mapping[layout]
+    })
 }

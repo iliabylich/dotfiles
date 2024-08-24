@@ -1,49 +1,32 @@
 import { HyprlandWorkspaces } from "../models/Hyprland.js";
 import loadWidgets from "../lib/loadWidgets.js";
 
-export default class Workspaces {
-    #widget = null;
-    #buttons = null;
-    #hyprland = null;
+export default function Workspaces({ minWorkspaces }) {
+    const buttons = loadWidgets(
+        "WorkspaceButton1",
+        "WorkspaceButton2",
+        "WorkspaceButton3",
+        "WorkspaceButton4",
+        "WorkspaceButton5",
+        "WorkspaceButton6",
+        "WorkspaceButton7",
+        "WorkspaceButton8",
+        "WorkspaceButton9",
+        "WorkspaceButton10"
+    );
 
-    constructor({ minWorkspaces }) {
-        const [widget, ...buttons] = loadWidgets(
-            "Workspaces",
+    const hyprland = new HyprlandWorkspaces({
+        minWorkspaces,
+        onChange: (workspaces) => {
+            buttons.forEach((button, idx) => {
+                const { isVisible, isActive } = workspaces[idx];
+                button.set_visible(isVisible);
+                button.set_css_classes(isActive ? ["active"] : ["inactive"]);
+            })
+        }
+    });
 
-            "WorkspaceButton1",
-            "WorkspaceButton2",
-            "WorkspaceButton3",
-            "WorkspaceButton4",
-            "WorkspaceButton5",
-            "WorkspaceButton6",
-            "WorkspaceButton7",
-            "WorkspaceButton8",
-            "WorkspaceButton9",
-            "WorkspaceButton10"
-        );
-
-        this.#widget = widget;
-        this.#buttons = buttons;
-
-        this.#buttons.forEach((button, idx) => {
-            button.connect("clicked", () => this.#hyprland.goTo(idx + 1));
-        });
-
-        this.#hyprland = new HyprlandWorkspaces({
-            minWorkspaces,
-            onChange: (workspaces) => this.#render(workspaces)
-        });
-    }
-
-    get widget() {
-        return this.#widget;
-    }
-
-    #render(workspaces) {
-        this.#buttons.forEach((button, idx) => {
-            const { isVisible, isActive } = workspaces[idx];
-            button.set_visible(isVisible);
-            button.set_css_classes(isActive ? ["active"] : ["inactive"]);
-        })
-    }
+    buttons.forEach((button, idx) => {
+        button.connect("clicked", () => hyprland.goTo(idx + 1));
+    });
 }

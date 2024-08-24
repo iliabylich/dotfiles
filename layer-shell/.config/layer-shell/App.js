@@ -32,7 +32,7 @@ const App = GObject.registerClass({
     }
 
     vfunc_activate() {
-        this.topBar = new TopBar({ application: this });
+        this.topBar = new TopBar({ application: this }).window;
         this.topBar.present()
 
         this.logoutScreen = new LogoutScreen({ application: this });

@@ -1,37 +1,21 @@
 import { WiFiStatus } from "../models/NetworkManager.js";
 import loadWidgets from "../lib/loadWidgets.js";
 
-export default class WiFi {
-    #widget = null;
-    #label = null;
+export default function WiFi() {
+    const [widget, label] = loadWidgets("WiFi", "WiFiLabel");
 
-    constructor() {
-        const [widget, label] = loadWidgets("WiFi", "WiFiLabel");
-        this.#widget = widget;
-        this.#label = label;
-
-        new WiFiStatus({
-            onChange: (status) => this.#render(status)
-        });
-
-        this.#widget.connect("clicked", () => {
-            globalThis.app.toggleWindowByNamespace("Networks");
-        })
-    }
-
-    get widget() {
-        return this.#widget;
-    }
-
-    #render(status) {
-        this.#label.label = this.#formatLabel(status);
-    }
-
-    #formatLabel(status) {
-        if (!status) {
-            return "Not connected";
+    new WiFiStatus({
+        onChange: (status) => {
+            if (status) {
+                const { ssid, strength } = status;
+                label.label = `${ssid || "Unknown"} (${strength}%) `
+            } else {
+                label.label = "Not connected";
+            }
         }
-        const { ssid, strength } = status;
-        return `${ssid || "Unknown"} (${strength}%) `
-    }
+    });
+
+    widget.connect("clicked", () => {
+        globalThis.app.toggleWindowByNamespace("Networks");
+    })
 }
