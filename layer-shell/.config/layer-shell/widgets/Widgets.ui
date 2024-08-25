@@ -543,4 +543,168 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
       </object>
     </child>
   </object>
+  <object class="GtkWindow" id="Launcher">
+    <style>
+      <class name="widget-launcher"/>
+    </style>
+    <property name="width-request">700</property>
+    <child>
+      <object class="GtkBox">
+        <style>
+          <class name="widget-launcher-wrapper"/>
+        </style>
+        <property name="orientation">1</property>
+        <child>
+          <object class="GtkEntry" id="LauncherEntry">
+            <style>
+              <class name="widget-launcher-search-box"/>
+            </style>
+            <property name="hexpand">true</property>
+            <property name="primary-icon-name">system-search</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <style>
+              <class name="widget-launcher-scroll-list"/>
+            </style>
+            <property name="can-focus">false</property>
+            <child>
+              <object class="GtkBox">
+                <style>
+                  <class name="widget-launcher-row-list"/>
+                </style>
+                <property name="orientation">1</property>
+                <child>
+                  <object class="GtkBox" id="LauncherRow1">
+                    <style>
+                      <class name="widget-launcher-row"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <style>
+                          <class name="widget-launcher-icon"/>
+                        </style>
+                        <property name="icon-size">2</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <style>
+                          <class name="widget-launcher-label"/>
+                        </style>
+                        <property name="xalign">0</property>
+                        <property name="valign">3</property>
+                        <property name="ellipsize">3</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox" id="LauncherRow2">
+                    <style>
+                      <class name="widget-launcher-row"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <style>
+                          <class name="widget-launcher-icon"/>
+                        </style>
+                        <property name="icon-size">2</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <style>
+                          <class name="widget-launcher-label"/>
+                        </style>
+                        <property name="xalign">0</property>
+                        <property name="valign">3</property>
+                        <property name="ellipsize">3</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox" id="LauncherRow3">
+                    <style>
+                      <class name="widget-launcher-row"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <style>
+                          <class name="widget-launcher-icon"/>
+                        </style>
+                        <property name="icon-size">2</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <style>
+                          <class name="widget-launcher-label"/>
+                        </style>
+                        <property name="xalign">0</property>
+                        <property name="valign">3</property>
+                        <property name="ellipsize">3</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox" id="LauncherRow4">
+                    <style>
+                      <class name="widget-launcher-row"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <style>
+                          <class name="widget-launcher-icon"/>
+                        </style>
+                        <property name="icon-size">2</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <style>
+                          <class name="widget-launcher-label"/>
+                        </style>
+                        <property name="xalign">0</property>
+                        <property name="valign">3</property>
+                        <property name="ellipsize">3</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox" id="LauncherRow5">
+                    <style>
+                      <class name="widget-launcher-row"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <style>
+                          <class name="widget-launcher-icon"/>
+                        </style>
+                        <property name="icon-size">2</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <style>
+                          <class name="widget-launcher-label"/>
+                        </style>
+                        <property name="xalign">0</property>
+                        <property name="valign">3</property>
+                        <property name="ellipsize">3</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

@@ -1,5 +1,6 @@
 using Gtk 4.0;
 using Gdk 4.0;
+using Pango 1.0;
 
 Window TopBar {
     styles ["bar"]
@@ -284,6 +285,112 @@ Window Networks {
                 icon-name: "window-close";
                 icon-size: large;
                 pixel-size: 30;
+            }
+        }
+    }
+}
+
+Window Launcher {
+    styles ["widget-launcher"]
+    width-request: 700;
+
+    Box {
+        styles ["widget-launcher-wrapper"]
+        orientation: vertical;
+
+        Entry LauncherEntry {
+            styles ["widget-launcher-search-box"]
+            hexpand: true;
+            primary-icon-name: "system-search";
+        }
+
+        ScrolledWindow {
+            styles ["widget-launcher-scroll-list"]
+            can-focus: false;
+
+            Box {
+                styles ["widget-launcher-row-list"]
+                orientation: vertical;
+
+                Box LauncherRow1 {
+                    styles ["widget-launcher-row"]
+
+                    Image {
+                        styles ["widget-launcher-icon"]
+                        icon-size: large;
+                    }
+
+                    Label {
+                        styles ["widget-launcher-label"]
+                        xalign: 0;
+                        valign: center;
+                        ellipsize: end;
+                    }
+                }
+
+                Box LauncherRow2 {
+                    styles ["widget-launcher-row"]
+
+                    Image {
+                        styles ["widget-launcher-icon"]
+                        icon-size: large;
+                    }
+
+                    Label {
+                        styles ["widget-launcher-label"]
+                        xalign: 0;
+                        valign: center;
+                        ellipsize: end;
+                    }
+                }
+
+                Box LauncherRow3 {
+                    styles ["widget-launcher-row"]
+
+                    Image {
+                        styles ["widget-launcher-icon"]
+                        icon-size: large;
+                    }
+
+                    Label {
+                        styles ["widget-launcher-label"]
+                        xalign: 0;
+                        valign: center;
+                        ellipsize: end;
+                    }
+                }
+
+                Box LauncherRow4 {
+                    styles ["widget-launcher-row"]
+
+                    Image {
+                        styles ["widget-launcher-icon"]
+                        icon-size: large;
+                    }
+
+                    Label {
+                        styles ["widget-launcher-label"]
+                        xalign: 0;
+                        valign: center;
+                        ellipsize: end;
+                    }
+                }
+
+                Box LauncherRow5 {
+                    styles ["widget-launcher-row"]
+
+                    Image {
+                        styles ["widget-launcher-icon"]
+                        icon-size: large;
+                    }
+
+                    Label {
+                        styles ["widget-launcher-label"]
+                        xalign: 0;
+                        valign: center;
+                        ellipsize: end;
+                    }
+                }
             }
         }
     }

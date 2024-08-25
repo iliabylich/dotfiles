@@ -2,57 +2,69 @@ import Gio from "gi://Gio?version=2.0";
 
 export default class AppList {
     #selectedIdx = 0;
-    #apps = [];
-    #search = "";
-    #maxSlots;
+    #globalAppList = [];
+    #visibleAppList = [];
+    #maxItems;
+    #onChange;
 
-    constructor(maxSlots = 8) {
-        this.#maxSlots = maxSlots;
-        this.#fetchApps();
-    }
-
-    get apps() {
-        return this.#visibleApps.
-            map((app, idx) => ({ ...app, isSelected: idx == this.#selectedIdx }))
+    constructor({ maxItems, onChange }) {
+        this.#maxItems = maxItems;
+        this.#onChange = onChange;
+        this.#refreshGlobalAppList();
+        this.#refreshVisibleAppList("");
+        this.#changed();
     }
 
     goUp() {
-        const prevIdx = this.#previousVisibleAppIdx
-        if (prevIdx !== null) {
-            this.#selectedIdx = prevIdx
-        }
+        this.#selectedIdx = Math.max(0, this.#selectedIdx - 1);
+        this.#changed();
     }
     goDown() {
-        const nextIdx = this.#nextVisibleAppIdx
-        if (nextIdx !== null) {
-            this.#selectedIdx = nextIdx
-        }
+        this.#selectedIdx = Math.min(this.#maxItems - 1, this.#selectedIdx + 1);
+        this.#changed();
     }
 
     set search(search) {
-        const previouslySelectedApp = this.selectedApp
-        this.#search = search
-        this.#selectedIdx = this.#visibleApps.findIndex(app => app.isVisible) || 0
-        if (previouslySelectedApp) {
-            const idInNewGeneration = this.#visibleApps.findIndex(app => app.name === previouslySelectedApp.name && app.isVisible)
-            if (idInNewGeneration !== -1) {
-                this.#selectedIdx = idInNewGeneration
-            }
+        this.#selectedIdx = 0;
+        this.#refreshVisibleAppList(search);
+        this.#changed();
+    }
+
+    runSelected() {
+        const app = this.#visibleAppList[this.#selectedIdx];
+        if (app) {
+            app.launch();
+            return true;
+        } else {
+            return false;
         }
     }
 
-    get selectedApp() {
-        return this.#visibleApps[this.#selectedIdx]
+    #refreshVisibleAppList(search) {
+        let re = null
+        try {
+            re = new RegExp(search, "i")
+        } catch (e) {
+        }
+
+        if (!re) {
+            this.#visibleAppList = this.#globalAppList;
+            return;
+        }
+
+        this.#visibleAppList = this.#globalAppList
+            .filter(app => app.name.match(re) !== null)
+            .slice(0, this.#maxItems)
     }
 
     reset() {
         this.#selectedIdx = 0;
-        this.#search = "";
-        this.#fetchApps();
+        this.#refreshGlobalAppList();
+        this.#refreshVisibleAppList("");
     }
 
-    #fetchApps() {
-        this.#apps = Gio.AppInfo.get_all()
+    #refreshGlobalAppList() {
+        this.#globalAppList = Gio.AppInfo.get_all()
             .filter(app => app.should_show())
             .map(app => Gio.DesktopAppInfo.new(app.get_id() || ''))
             .map(app => ({
@@ -62,46 +74,9 @@ export default class AppList {
             }));
     }
 
-    get #visibleApps() {
-        let re = null
-        try {
-            re = new RegExp(this.#search, "i")
-        } catch (e) {
-        }
-
-        let slotsLeft = this.#maxSlots;
-        const isVisible = (appName) => {
-            if (re && appName.match(re) === null) {
-                return false
-            }
-            if (slotsLeft === 0) {
-                return false
-            }
-            slotsLeft -= 1
-            return true
-        }
-
-        return this.#apps.map(app => ({
-            isVisible: isVisible(app.name),
-            ...app
-        }))
-    }
-
-    get #previousVisibleAppIdx() {
-        for (let idx = this.#selectedIdx - 1; idx >= 0; idx--) {
-            if (this.#visibleApps[idx] && this.#visibleApps[idx].isVisible) {
-                return idx
-            }
-        }
-        return null
-    }
-
-    get #nextVisibleAppIdx() {
-        for (let idx = this.#selectedIdx + 1; idx < this.#visibleApps.length; idx++) {
-            if (this.#visibleApps[idx].isVisible) {
-                return idx
-            }
-        }
-        return null
+    #changed() {
+        const apps = this.#visibleAppList
+            .map((app, idx) => ({ ...app, isSelected: idx === this.#selectedIdx }));
+        this.#onChange(apps)
     }
 }

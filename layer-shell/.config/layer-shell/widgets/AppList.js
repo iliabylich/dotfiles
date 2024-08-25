@@ -1,120 +1,66 @@
-import GObject from "gi://GObject?version=2.0";
-import Gtk from "gi://Gtk?version=4.0";
-import Pango from "gi://Pango?version=1.0";
 import AppListModel from "../models/AppList.js";
+import loadWidgets from "../lib/loadWidgets.js";
 
-const AppList = GObject.registerClass({
-    GTypeName: 'AppList'
-}, class extends Gtk.Box {
-    #container = null;
-    #entry = null;
+function close() {
+    globalThis.app.toggleWindow("Launcher");
+}
 
-    #applist = new AppListModel(8);
+export default function AppList() {
+    const [entry, ...rows] = loadWidgets(
+        "LauncherEntry",
 
-    constructor() {
-        super({
-            css_classes: ["widget-launcher-wrapper"],
-            orientation: Gtk.Orientation.VERTICAL,
-        })
+        "LauncherRow1",
+        "LauncherRow2",
+        "LauncherRow3",
+        "LauncherRow4",
+        "LauncherRow5"
+    );
 
-        this.#container = new Gtk.Box({
-            css_classes: ["widget-launcher-row-list"],
-            orientation: Gtk.Orientation.VERTICAL,
-        })
+    const model = new AppListModel({
+        maxItems: 5,
+        onChange: (apps) => {
+            rows.forEach((row, idx) => {
+                const app = apps[idx];
+                if (!app) {
+                    row.set_visible(false);
+                    return
+                }
+                row.set_visible(true);
+                if (app.isSelected) {
+                    row.add_css_class("widget-launcher-row-active");
+                } else {
+                    row.remove_css_class("widget-launcher-row-active");
+                }
 
-        this.#entry = new Gtk.Entry({
-            css_classes: ["widget-launcher-search-box"],
-            hexpand: true,
-            text: "",
-            primary_icon_name: "system-search",
-        });
-        this.#entry.connect("activate", () => {
-            if (this.#applist.selectedApp) {
-                this.#applist.selectedApp.launch();
-                this.#close();
-            }
-        });
-        this.#entry.connect("notify::text", ({ text }) => {
-            this.#applist.search = text;
-            this.#render();
-        })
-        this.append(this.#entry);
+                const [image, label] = [row.get_first_child(), row.get_last_child()];
+                image.set_from_icon_name(app.iconName);
+                label.set_label(app.name);
+            })
+        }
+    });
 
-        this.append(new Gtk.ScrolledWindow({
-            css_classes: ["widget-launcher-scroll-list"],
-            can_focus: false,
-            child: this.#container
-        }));
-        this.reset();
+    entry.connect("activate", () => {
+        if (model.runSelected()) {
+            close();
+        }
+    });
+    entry.connect("notify::text", ({ text }) => {
+        model.search = text;
+    });
+
+    const keyBindings = {
+        "Up": () => model.goUp(),
+        "Down": () => model.goDown(),
     }
 
-    onKeyPress(key) {
-        switch (key) {
-            case "Escape":
-                this.#close();
-                break;
-            case "Up":
-                this.#applist.goUp();
-                this.#render();
-                break;
-            case "Down":
-                this.#applist.goDown();
-                this.#render();
-                break;
+    return {
+        reset: () => {
+            model.reset();
+            entry.text = "";
+        },
+        onKeyPress: (key) => {
+            const f = keyBindings[key];
+            if (f) f()
         }
     }
-
-    reset() {
-        this.#applist.reset();
-        this.#entry.text = "";
-        this.#render();
-    }
-
-    #render() {
-        while (true) {
-            const child = this.#container.get_first_child();
-            if (!child) {
-                break;
-            }
-            this.#container.remove(child);
-        }
-
-        for (const app of this.#applist.apps) {
-            if (app.isVisible) {
-                const row = new Gtk.Box({
-                    css_classes: app.isSelected ?
-                        ["widget-launcher-row", "widget-launcher-row-active"] :
-                        ["widget-launcher-row", "widget-launcher-row-inactive"],
-
-                });
-                const ctrl = new Gtk.GestureClick();
-                ctrl.connect("pressed", () => {
-                    app.launch();
-                    this.#close();
-                });
-                row.add_controller(ctrl);
-
-                row.append(new Gtk.Image({
-                    icon_name: app.iconName,
-                    css_classes: ["widget-launcher-icon"],
-                    icon_size: Gtk.IconSize.LARGE
-                }));
-                row.append(new Gtk.Label({
-                    css_classes: ["widget-launcher-label"],
-                    label: app.name,
-                    xalign: 0,
-                    valign: Gtk.Align.CENTER,
-                    ellipsize: Pango.EllipsizeMode.END,
-                }));
-
-                this.#container.append(row);
-            }
-        }
-    }
-
-    #close() {
-        globalThis.app.toggleWindow("Launcher");
-    }
-});
-
-export default AppList;
+}
