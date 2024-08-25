@@ -11,5 +11,6 @@ export default function keybindings(window, keybindings, fallbackFn) {
 
         fallbackFn(key)
     })
+    ctrl.set_propagation_phase(Gtk.PropagationPhase.CAPTURE);
     window.add_controller(ctrl);
 }
