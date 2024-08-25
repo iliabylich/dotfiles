@@ -27,9 +27,9 @@ export default function AppList() {
                 }
                 row.set_visible(true);
                 if (app.isSelected) {
-                    row.add_css_class("widget-launcher-row-active");
+                    row.add_css_class("active");
                 } else {
-                    row.remove_css_class("widget-launcher-row-active");
+                    row.remove_css_class("active");
                 }
 
                 const [image, label] = [row.get_first_child(), row.get_last_child()];

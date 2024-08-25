@@ -3,8 +3,6 @@ using Gdk 4.0;
 using Pango 1.0;
 
 Window TopBar {
-    styles ["bar"]
-
     CenterBox {
         styles ["main-wrapper"]
 
@@ -13,7 +11,7 @@ Window TopBar {
             spacing: 8;
 
             Box Workspaces {
-                styles ["workspaces", "widget"]
+                styles ["widget", "workspaces"]
 
                 Button WorkspaceButton1  { Label { label: "1";  } }
                 Button WorkspaceButton2  { Label { label: "2";  } }
@@ -85,7 +83,7 @@ Window TopBar {
             }
 
             Button WiFi {
-                styles ["network", "widget", "padded", "clickable"]
+                styles ["widget", "network", "padded", "clickable"]
                 cursor: Gdk.Cursor { name: "pointer"; };
 
                 Label WiFiLabel {
@@ -93,7 +91,7 @@ Window TopBar {
             }
 
             CenterBox Clock {
-                styles ["clock", "widget", "padded"]
+                styles ["widget", "clock", "padded"]
 
                 [center]
                 Label ClockLabel {
@@ -101,7 +99,7 @@ Window TopBar {
             }
 
             Button PowerButton {
-                styles ["power", "widget", "padded", "clickable"]
+                styles ["widget", "power", "padded", "clickable"]
                 cursor: Gdk.Cursor { name: "pointer"; };
 
                 Label {
@@ -116,7 +114,7 @@ Window LogoutScreen {
     styles ["widget-logout"]
     visible: false;
 
-    Box Logout {
+    Box {
         styles ["widget-logout-wrapper"]
         orientation: horizontal;
         homogeneous: true;
@@ -154,7 +152,7 @@ Window Networks {
         orientation: vertical;
 
         CenterBox Network1Row {
-            styles ["widget-network-clickable", "widget-network-row"]
+            styles ["widget-network-row"]
             orientation: horizontal;
             halign: fill;
 
@@ -173,7 +171,7 @@ Window Networks {
         }
 
         CenterBox Network2Row {
-            styles ["widget-network-clickable", "widget-network-row"]
+            styles ["widget-network-row"]
             orientation: horizontal;
             halign: fill;
 
@@ -192,7 +190,7 @@ Window Networks {
         }
 
         CenterBox Network3Row {
-            styles ["widget-network-clickable", "widget-network-row"]
+            styles ["widget-network-row"]
             orientation: horizontal;
             halign: fill;
 
@@ -211,7 +209,7 @@ Window Networks {
         }
 
         CenterBox Network4Row {
-            styles ["widget-network-clickable", "widget-network-row"]
+            styles ["widget-network-row"]
             orientation: horizontal;
             halign: fill;
 
@@ -230,7 +228,7 @@ Window Networks {
         }
 
         CenterBox Network5Row {
-            styles ["widget-network-clickable", "widget-network-row"]
+            styles ["widget-network-row"]
             orientation: horizontal;
             halign: fill;
 
@@ -249,7 +247,7 @@ Window Networks {
         }
 
         CenterBox NetworkSettingsRow {
-            styles ["widget-network-clickable", "widget-network-row"]
+            styles ["widget-network-row"]
             orientation: horizontal;
             halign: fill;
 
@@ -269,7 +267,7 @@ Window Networks {
         }
 
         CenterBox NetworkExitRow {
-            styles ["widget-network-clickable", "widget-network-row"]
+            styles ["widget-network-row"]
             orientation: horizontal;
             halign: fill;
 
@@ -291,7 +289,6 @@ Window Networks {
 }
 
 Window Launcher {
-    styles ["widget-launcher"]
     width-request: 700;
 
     Box {
@@ -309,19 +306,16 @@ Window Launcher {
             can-focus: false;
 
             Box {
-                styles ["widget-launcher-row-list"]
                 orientation: vertical;
 
                 Box LauncherRow1 {
                     styles ["widget-launcher-row"]
 
                     Image {
-                        styles ["widget-launcher-icon"]
                         icon-size: large;
                     }
 
                     Label {
-                        styles ["widget-launcher-label"]
                         xalign: 0;
                         valign: center;
                         ellipsize: end;
@@ -332,12 +326,10 @@ Window Launcher {
                     styles ["widget-launcher-row"]
 
                     Image {
-                        styles ["widget-launcher-icon"]
                         icon-size: large;
                     }
 
                     Label {
-                        styles ["widget-launcher-label"]
                         xalign: 0;
                         valign: center;
                         ellipsize: end;
@@ -348,12 +340,10 @@ Window Launcher {
                     styles ["widget-launcher-row"]
 
                     Image {
-                        styles ["widget-launcher-icon"]
                         icon-size: large;
                     }
 
                     Label {
-                        styles ["widget-launcher-label"]
                         xalign: 0;
                         valign: center;
                         ellipsize: end;
@@ -364,12 +354,10 @@ Window Launcher {
                     styles ["widget-launcher-row"]
 
                     Image {
-                        styles ["widget-launcher-icon"]
                         icon-size: large;
                     }
 
                     Label {
-                        styles ["widget-launcher-label"]
                         xalign: 0;
                         valign: center;
                         ellipsize: end;
@@ -380,12 +368,10 @@ Window Launcher {
                     styles ["widget-launcher-row"]
 
                     Image {
-                        styles ["widget-launcher-icon"]
                         icon-size: large;
                     }
 
                     Label {
-                        styles ["widget-launcher-label"]
                         xalign: 0;
                         valign: center;
                         ellipsize: end;

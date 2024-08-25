@@ -5,7 +5,7 @@
 
 .widget-launcher-scroll-list {
     min-width: 500px;
-    min-height: 300px;
+    min-height: 260px;
     background-color: rgba(100, 100, 100, 0.8);
     padding: 30px;
 }
@@ -25,15 +25,12 @@
     padding: 10px;
 }
 
-.widget-launcher-row-active {
+.widget-launcher-row.active {
     background-color: rgba(100, 100, 100, 1);
 }
 
-.widget-launcher-icon {
+.widget-launcher-row image {
     min-width: 32px;
     min-height: 32px;
-}
-
-.widget-launcher-icon {
     margin-right: 10px;
 }
