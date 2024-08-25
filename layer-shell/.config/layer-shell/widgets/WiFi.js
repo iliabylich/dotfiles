@@ -1,5 +1,6 @@
 import { WiFiStatus } from "../models/NetworkManager.js";
 import loadWidgets from "../lib/loadWidgets.js";
+import { toggleWindow } from "../lib/toggleWindow.js";
 
 export default function WiFi() {
     const [widget, label] = loadWidgets("WiFi", "WiFiLabel");
@@ -16,6 +17,6 @@ export default function WiFi() {
     });
 
     widget.connect("clicked", () => {
-        globalThis.app.toggleWindow("Networks");
+        toggleWindow("Networks");
     })
 }

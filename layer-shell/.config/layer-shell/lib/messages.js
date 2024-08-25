@@ -1,6 +1,8 @@
 import GLib from "gi://GLib?version=2.0";
 import Gio from "gi://Gio?version=2.0";
 
+import { toggleWindow } from "./toggleWindow.js";
+
 const HOME = GLib.getenv("HOME");
 const messagesPath = `${HOME}/.config/layer-shell/.messages`;
 
@@ -22,7 +24,7 @@ function readAndProcessOneMessage(app) {
                     break;
                 }
                 case "toggleWindow": {
-                    app.toggleWindow(message.name);
+                    toggleWindow(message.name);
                     break;
                 }
                 default: {

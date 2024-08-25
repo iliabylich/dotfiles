@@ -4,6 +4,7 @@ import LayerWindow from '../lib/LayerWindow.js';
 import Logout from "../widgets/Logout.js";
 import loadWidgets from "../lib/loadWidgets.js";
 import keybindings from "../lib/keybindings.js";
+import { toggleWindow } from "../lib/toggleWindow.js";
 
 export default function LogoutScreen({ application }) {
     const [window] = loadWidgets("LogoutScreen");
@@ -24,7 +25,7 @@ export default function LogoutScreen({ application }) {
 
     keybindings(
         window,
-        { "Escape": () => application.toggleWindow("LogoutScreen") },
+        { "Escape": () => toggleWindow("LogoutScreen") },
         (otherKey) => widget.onKeyPress(otherKey)
     );
 

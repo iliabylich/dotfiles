@@ -4,6 +4,7 @@ import LayerWindow from '../lib/LayerWindow.js';
 import NetworkList from "../widgets/NetworkList.js";
 import loadWidgets from "../lib/loadWidgets.js"
 import keybindings from "../lib/keybindings.js";
+import { toggleWindow } from "../lib/toggleWindow.js";
 
 export default function Networks({ application }) {
     const [window] = loadWidgets("Networks");
@@ -24,7 +25,7 @@ export default function Networks({ application }) {
 
     keybindings(
         window,
-        { "Escape": () => application.toggleWindow("Networks") },
+        { "Escape": () => toggleWindow("Networks") },
         (_otherKey) => { }
     )
 

@@ -4,6 +4,7 @@ import LayerWindow from '../lib/LayerWindow.js';
 import AppList from "../widgets/AppList.js";
 import keybindings from "../lib/keybindings.js";
 import loadWidgets from "../lib/loadWidgets.js";
+import { toggleWindow } from "../lib/toggleWindow.js";
 
 export default function Launcher({ application }) {
     const [window] = loadWidgets("Launcher");
@@ -18,7 +19,7 @@ export default function Launcher({ application }) {
 
     keybindings(
         window,
-        { "Escape": () => application.toggleWindow("Launcher") },
+        { "Escape": () => toggleWindow("Launcher") },
         (otherKey) => widget.onKeyPress(otherKey)
     );
 

@@ -1,9 +1,6 @@
 import AppListModel from "../models/AppList.js";
 import loadWidgets from "../lib/loadWidgets.js";
-
-function close() {
-    globalThis.app.toggleWindow("Launcher");
-}
+import { toggleWindow } from "../lib/toggleWindow.js";
 
 export default function AppList() {
     const [entry, ...rows] = loadWidgets(
@@ -41,7 +38,7 @@ export default function AppList() {
 
     entry.connect("activate", () => {
         if (model.runSelected()) {
-            close();
+            toggleWindow("Launcher")
         }
     });
     entry.connect("notify::text", ({ text }) => {

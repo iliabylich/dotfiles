@@ -17,19 +17,15 @@ export default class Logout {
     }
 
     lock() {
-        globalThis.app.toggleWindow("LogoutScreen");
         execAsync(["hyprlock"])
     }
     reboot() {
-        globalThis.app.toggleWindow("LogoutScreen");
         execAsync(["systemctl", "reboot"])
     }
     shutdown() {
-        globalThis.app.toggleWindow("LogoutScreen");
         execAsync(["systemctl", "poweroff"])
     }
     logout() {
-        globalThis.app.toggleWindow("LogoutScreen");
         execAsync(["hyprctl", "dispatch", "exit"])
     }
 

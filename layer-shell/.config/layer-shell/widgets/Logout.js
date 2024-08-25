@@ -1,5 +1,6 @@
 import loadWidgets from "../lib/loadWidgets.js";
 import LogoutModel from "../models/Logout.js";
+import { toggleWindow } from "../lib/toggleWindow.js";
 
 export default function Logout() {
     const buttons = loadWidgets(
@@ -22,10 +23,22 @@ export default function Logout() {
         }
     });
 
-    buttons[0].connect("clicked", () => model.lock());
-    buttons[1].connect("clicked", () => model.reboot());
-    buttons[2].connect("clicked", () => model.shutdown());
-    buttons[3].connect("clicked", () => model.logout());
+    buttons[0].connect("clicked", () => {
+        toggleWindow("LogoutScreen");
+        model.lock();
+    });
+    buttons[1].connect("clicked", () => {
+        toggleWindow("LogoutScreen");
+        model.reboot();
+    });
+    buttons[2].connect("clicked", () => {
+        toggleWindow("LogoutScreen");
+        model.shutdown();
+    });
+    buttons[3].connect("clicked", () => {
+        toggleWindow("LogoutScreen");
+        model.logout();
+    });
 
     const keyBindings = {
         "Left": () => model.left(),
