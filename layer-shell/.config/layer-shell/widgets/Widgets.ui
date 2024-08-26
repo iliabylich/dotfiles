@@ -119,6 +119,21 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
           <object class="GtkBox">
             <property name="spacing">4</property>
             <child>
+              <object class="GtkButton" id="Terminal">
+                <style>
+                  <class name="widget"/>
+                  <class name="terminal"/>
+                  <class name="padded"/>
+                  <class name="clickable"/>
+                </style>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">Terminal</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
               <object class="GtkCenterBox" id="Language">
                 <style>
                   <class name="widget"/>

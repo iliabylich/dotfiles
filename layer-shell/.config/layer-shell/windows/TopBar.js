@@ -10,6 +10,7 @@ import CPU from '../widgets/CPU.js';
 import Sound from '../widgets/Sound.js';
 import Language from '../widgets/Language.js';
 import Workspaces from '../widgets/Workspaces.js';
+import Terminal from '../widgets/Terminal.js';
 
 export default function TopBar({ application }) {
     const [window] = loadWidgets("TopBar");
@@ -28,6 +29,7 @@ export default function TopBar({ application }) {
     })
 
     Workspaces({ minWorkspaces: 5 });
+    Terminal();
     Language();
     Sound();
     CPU();

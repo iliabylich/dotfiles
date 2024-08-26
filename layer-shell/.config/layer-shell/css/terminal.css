@@ -1,0 +1,4 @@
+.widget-terminal {
+    border: 5px solid @accentColor;
+    border-radius: 10px;
+}
