@@ -21,3 +21,13 @@ notify-send text:
     systemctl --user restart dunst
     notify-send "{{text}}-1"
     notify-send "{{text}}-2"
+
+install-chrome:
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome.deb
+    sudo apt install ./google-chrome.deb
+    rm -f google-chrome.deb
+
+install-vscode:
+    wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
+    sudo apt install ./vscode.deb
+    rm -f vscode.deb
