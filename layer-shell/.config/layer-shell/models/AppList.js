@@ -1,4 +1,22 @@
 import Gio from "gi://Gio?version=2.0";
+import execAsync from "../lib/execAsync.js";
+
+function exclude(appName) {
+    if (appName === "Google Chrome") {
+        return true;
+    }
+    return false;
+}
+
+function customApps() {
+    return [
+        {
+            name: "Google Chrome (wayland, gtk4)",
+            iconName: "google-chrome",
+            launch: () => execAsync(["google-chrome-stable", "--gtk-version=4", "--ozone-platform-hint=wayland"])
+        }
+    ]
+}
 
 export default class AppList {
     #selectedIdx = 0;
@@ -54,6 +72,7 @@ export default class AppList {
 
         this.#visibleAppList = this.#globalAppList
             .filter(app => app.name.match(re) !== null)
+            .filter(app => !exclude(app.name))
             .slice(0, this.#maxItems)
     }
 
@@ -64,14 +83,17 @@ export default class AppList {
     }
 
     #refreshGlobalAppList() {
-        this.#globalAppList = Gio.AppInfo.get_all()
-            .filter(app => app.should_show())
-            .map(app => Gio.DesktopAppInfo.new(app.get_id() || ''))
-            .map(app => ({
-                name: app.get_name(),
-                iconName: app.get_string('Icon') || "",
-                launch: () => app.launch([], null)
-            }));
+        this.#globalAppList = [
+            ...customApps(),
+            ...Gio.AppInfo.get_all()
+                .filter(app => app.should_show())
+                .map(app => Gio.DesktopAppInfo.new(app.get_id() || ''))
+                .map(app => ({
+                    name: app.get_name(),
+                    iconName: app.get_string('Icon') || "",
+                    launch: () => app.launch([], null)
+                }))
+        ];
     }
 
     #changed() {
