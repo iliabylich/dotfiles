@@ -1,7 +1,6 @@
 const GIRepository = imports.gi.GIRepository;
-GIRepository.Repository.prepend_search_path("/usr/lib/gnome-shell");
-GIRepository.Repository.prepend_library_path("/usr/lib/gnome-shell");
-const Gvc = imports.gi.Gvc;
+GIRepository.Repository.prepend_library_path("/usr/lib/x86_64-linux-gnu/girepository-1.0");
+import Gvc from "gi://Gvc?version=1.0";
 
 export default class OutputSound {
     #control = null;
