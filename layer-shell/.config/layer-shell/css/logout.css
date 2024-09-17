@@ -7,7 +7,7 @@
 }
 
 .widget-logout-button {
-    border: 5px solid @accentColor;
+    border: 5px solid var(--accent-color);
     border-radius: 20px;
 }
 

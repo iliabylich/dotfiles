@@ -9,7 +9,7 @@
     font-family: Roboto, "Font Awesome 5 Free";
     font-size: 13px;
     font-weight: normal;
-    color: @textColor;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -19,16 +19,16 @@
 }
 
 .widget {
-    border: 2px @accentColor solid;
+    border: 2px var(--accent-color) solid;
     border-radius: 10px;
 }
 
 .widget.clickable:hover {
-    background-color: @accentColor;
+    background-color: var(--accent-color);
 }
 
 .widget.clickable:hover label {
-    color: @bgColor;
+    color: var(--bg-color);
 }
 
 .widget.padded {
@@ -36,9 +36,9 @@
 }
 
 tooltip {
-    background-color: @bgColor;
+    background-color: var(--bg-color);
     padding: 2px;
-    border: 1px solid @accentColor;
+    border: 1px solid var(--accent-color);
 }
 
 .workspaces button {
@@ -56,7 +56,7 @@ tooltip {
 }
 
 .workspaces button.active {
-    background-color: @accentColor;
+    background-color: var(--accent-color);
 }
 
 .sound-slider {
@@ -67,13 +67,13 @@ tooltip {
     min-width: 1px;
     background-color: black;
     min-height: 10px;
-    border: 1px solid @textColor;
+    border: 1px solid var(--text-color);
     border-radius: 5px;
 }
 
 .sound-slider highlight {
     min-width: 1px;
-    background-color: @accentColor;
+    background-color: var(--accent-color);
     border-radius: 5px;
 }
 

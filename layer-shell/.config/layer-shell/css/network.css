@@ -1,5 +1,5 @@
 .widget-network-row-list {
-    border: 5px solid @accentColor;
+    border: 5px solid var(--accent-color);
     border-radius: 10px;
     background-color: rgba(100, 100, 100, 0.8);
 }
@@ -15,9 +15,9 @@
 }
 
 .widget-network image {
-    color: @accentColor;
+    color: var(--accent-color);
 }
 
 .widget-network image:active {
-    color: @accentDarkColor;
+    color: var(--accent-dark-color);
 }

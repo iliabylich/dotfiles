@@ -1,5 +1,5 @@
 .widget-launcher-wrapper {
-    border: 5px solid @accentColor;
+    border: 5px solid var(--accent-color);
     border-radius: 10px;
 }
 
@@ -13,7 +13,7 @@
 .widget-launcher-search-box {
     background-color: rgba(100, 100, 100, 0.8);
     padding: 20px 30px;
-    border-bottom: 5px solid @accentColor;
+    border-bottom: 5px solid var(--accent-color);
 }
 
 .widget-launcher-search-box image {
