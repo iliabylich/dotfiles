@@ -58,3 +58,6 @@ generate-ssh-key:
     git config --global user.name "Ilya Bylich"
     ssh-keygen -t ed25519 -C "ibylich@gmail.com"
     /bin/cat ~/.ssh/id_ed25519.pub
+
+install-rust:
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
