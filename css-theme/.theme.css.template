@@ -1,0 +1,8 @@
+* {
+    --accent-color: #${ACCENT_COLOR};
+    --accent-dark-color: #${ACCENT_DARK_COLOR};
+    --text-color: #${TEXT_COLOR};
+    --bg-color: #${BG_COLOR};
+    --solid-bg-color: ${SOLID_BG_COLOR};
+    --solid-bg-color-hover: ${SOLID_BG_COLOR_HOVER};
+}

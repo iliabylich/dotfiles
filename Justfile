@@ -4,18 +4,14 @@ default:
 link-all:
     @just _link bash
     @just _link hypr
-    @just link-code
     @just _link wallpapers
     @just _link wofi
     @just _link dunst
     @just _link layer-shell
+    @just _link css-theme
 
 _link MOD:
     stow -d . -t ~ {{MOD}}
-
-link-code:
-    mkdir -p ~/.config/Code/User
-    @just _link code
 
 render-templates:
     ./templates.sh
@@ -31,10 +27,8 @@ install-chrome:
     sudo apt install -y ./google-chrome.deb
     rm -f google-chrome.deb
 
-install-vscode:
-    wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
-    sudo apt install -y ./vscode.deb
-    rm -f vscode.deb
+install-zed:
+    curl -f https://zed.dev/install.sh | sh
 
 install-1pasword:
     wget https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb

@@ -1,0 +1,8 @@
+* {
+    --accent-color: #90A959;
+    --accent-dark-color: #526035;
+    --text-color: #D0D0D0;
+    --bg-color: #151515;
+    --solid-bg-color: rgba(100, 100, 100, 0.8);
+    --solid-bg-color-hover: rgba(100, 100, 100, 1);
+}
