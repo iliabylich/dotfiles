@@ -12,3 +12,5 @@ alias gd="git diff"
 alias code="code --ozone-platform-hint=wayland"
 alias cat="batcat"
 alias layer-shell="~/.config/layer-shell/layer-shell"
+
+export PATH="$HOME/.local/bin:$PATH"
