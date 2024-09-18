@@ -7,7 +7,6 @@ link-all:
     @just _link wallpapers
     @just _link wofi
     @just _link dunst
-    @just _link layer-shell
     @just _link css-theme
 
 _link MOD:

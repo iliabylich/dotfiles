@@ -17,10 +17,3 @@ for SOURCE in $(find . -name "*.template"); do
 
     envsubst "$ALL_COLORS" < "$SOURCE" > "$TARGET"
 done
-
-for SOURCE in $(find . -name "*.blp"); do
-    TARGET="${SOURCE%.blp}.ui"
-    echo "$SOURCE -> $TARGET"
-
-    blueprint-compiler compile "$SOURCE" > "$TARGET"
-done
