@@ -54,3 +54,7 @@ generate-ssh-key:
 
 install-rust:
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+binstall:
+    cargo install cargo-binstall
+    cargo binstall -y cargo-bloat cargo-outdated
