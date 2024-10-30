@@ -5,7 +5,6 @@ link-all:
     @just _link bash
     @just _link hypr
     @just _link wallpapers
-    @just _link wofi
     @just _link dunst
     @just _link css-theme
 
