@@ -4,5 +4,6 @@
     "files.trimFinalNewlines": true,
     "editor.formatOnSave": true,
     "security.workspace.trust.untrustedFiles": "open",
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "explorer.confirmDragAndDrop": false
 }
