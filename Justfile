@@ -7,6 +7,7 @@ link-all:
     @just _link wallpapers
     @just _link dunst
     @just _link css-theme
+    @just _link ghostty
     @just link-code
 
 _link MOD:
