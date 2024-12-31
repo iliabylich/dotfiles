@@ -3,3 +3,4 @@ window-padding-y = 10
 background-opacity = 0.95
 font-feature = -calt
 gtk-titlebar = false
+keybind = super+k=clear_screen
