@@ -8,6 +8,7 @@ link-all:
     @just _link dunst
     @just _link css-theme
     @just _link ghostty
+    @just _link starship
     @just link-code
 
 _link MOD:

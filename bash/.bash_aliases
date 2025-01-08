@@ -13,5 +13,6 @@ alias code="code --ozone-platform-hint=wayland"
 alias cat="batcat"
 
 eval "$(layer-shell generate bash)"
+eval "$(starship init bash)"
 
 export PATH="$HOME/.local/bin:$PATH"
