@@ -38,7 +38,7 @@ install-vscode:
     sudo apt install -y ./vscode.deb
     rm -f vscode.deb
 
-install-1pasword:
+install-1password:
     wget https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
     sudo apt install -y ./1password-latest.deb
     rm -f 1password-latest.deb
