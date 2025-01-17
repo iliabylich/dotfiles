@@ -13,6 +13,7 @@ alias gd="git diff"
 
 alias code="code --ozone-platform-hint=wayland"
 alias cat="batcat"
+alias ls="lsd"
 
 eval "$(layer-shell generate bash)"
 eval "$(starship init bash)"
