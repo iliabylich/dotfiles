@@ -66,4 +66,4 @@ install-rust:
 
 binstall:
     cargo install cargo-binstall
-    cargo binstall -y cargo-bloat cargo-outdated cbindgen
+    cargo binstall -y cargo-bloat cargo-outdated cbindgen dbus-codegen
