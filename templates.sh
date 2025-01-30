@@ -11,9 +11,15 @@ export SOLID_BG_COLOR_HOVER="rgba(100, 100, 100, 1)"
 
 export ALL_COLORS='$ACCENT_COLOR $ACCENT_DARK_COLOR $TEXT_COLOR $BG_COLOR $SOLID_BG_COLOR $SOLID_BG_COLOR_HOVER'
 
-for SOURCE in $(find . -name "*.template"); do
-    TARGET="${SOURCE%.template}"
-    echo "$SOURCE -> $TARGET"
+render() {
+    local source="$1"
+    local target="$2"
 
-    envsubst "$ALL_COLORS" < "$SOURCE" > "$TARGET"
-done
+    echo "$source -> $target"
+    envsubst "$ALL_COLORS" < "$source" > "$target"
+}
+
+render templates/.theme.css.template css-theme/.theme.css
+render templates/colors.conf.template hypr/.config/hypr/colors.conf
+
+hyprctl reload
