@@ -1,0 +1,5 @@
+keymap:
+  - name: global
+    remap:
+      Super-left: Home
+      Super-right: End

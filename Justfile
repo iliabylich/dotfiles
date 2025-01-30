@@ -9,6 +9,7 @@ link-all:
     @just _link css-theme
     @just _link ghostty
     @just _link starship
+    @just _link xremap
     @just link-code
 
 _link MOD:
