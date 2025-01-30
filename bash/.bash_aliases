@@ -10,6 +10,7 @@ alias glog="git log --oneline"
 alias ga="git add"
 alias gst="git status"
 alias gd="git diff"
+alias branch="git rev-parse --abbrev-ref HEAD"
 
 alias code="code --ozone-platform-hint=wayland"
 alias cat="batcat"
