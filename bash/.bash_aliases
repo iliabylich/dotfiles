@@ -19,3 +19,4 @@ alias ls="ls --color"
 eval "$(starship init bash)"
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:/usr/sbin"
