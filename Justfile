@@ -10,6 +10,7 @@ link-all:
     @just _link ghostty
     @just _link starship
     @just _link xremap
+    @just _link git
     @just link-code
 
 _link MOD:

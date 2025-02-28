@@ -1,0 +1,16 @@
+.ruby-version
+.ruby-gemset
+.rvmrc
+.byebug_history
+.pryrc
+.rspec
+.rspec_status
+.irbrc
+
+.nvmrc
+
+.vscode
+
+test.rb
+fails
+out
