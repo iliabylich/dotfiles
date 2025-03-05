@@ -7,5 +7,6 @@
     "extensions.ignoreRecommendations": true,
     "explorer.confirmDragAndDrop": false,
     "mesonbuild.downloadLanguageServer": true,
-    "chat.commandCenter.enabled": false
+    "chat.commandCenter.enabled": false,
+    "git.openRepositoryInParentFolders": "never"
 }
