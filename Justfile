@@ -11,6 +11,7 @@ link-all:
     @just _link starship
     @just _link xremap
     @just _link git
+    @just _link wezterm
     @just link-code
 
 _link MOD:
