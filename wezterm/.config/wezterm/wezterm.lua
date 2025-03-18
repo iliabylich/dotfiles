@@ -2,8 +2,17 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 local act = wezterm.action
 
-config.color_scheme = 'Afterglow'
-config.keys = {}
+config.color_scheme = 'Andromeda'
+config.keys = {
+    {
+        key = 'k',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.ClearScrollback 'ScrollbackAndViewport',
+            act.SendKey { key = 'L', mods = 'CTRL' },
+        },
+    },
+}
 
 for i = 1, 8 do
 table.insert(config.keys, {
