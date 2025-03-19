@@ -3,6 +3,15 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 
 config.color_scheme = 'Andromeda'
+
+local padding = "30px"
+config.window_padding = {
+    left = padding,
+    right = padding,
+    top = padding,
+    bottom = padding,
+}
+
 config.keys = {
     {
         key = 'k',
@@ -15,11 +24,11 @@ config.keys = {
 }
 
 for i = 1, 8 do
-table.insert(config.keys, {
-    key = tostring(i),
-    mods = 'ALT',
-    action = act.ActivateTab(i - 1),
-})
+    table.insert(config.keys, {
+        key = tostring(i),
+        mods = 'ALT',
+        action = act.ActivateTab(i - 1),
+    })
 end
 
 config.enable_scroll_bar = true
