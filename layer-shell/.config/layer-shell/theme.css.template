@@ -1,0 +1,15 @@
+* {
+    --accent-color: {{colors.inverse_primary.dark.hex}};
+    --text-color: {{colors.on_secondary_container.dark.hex}};
+    --bg-color: #151515;
+    --solid-bg-color: rgba(
+        {{colors.surface_container.dark.red}},
+        {{colors.surface_container.dark.green}},
+        {{colors.surface_container.dark.blue}},
+        0.6);
+    --solid-bg-color-hover: rgba(
+        {{colors.surface_variant.dark.red}},
+        {{colors.surface_variant.dark.green}},
+        {{colors.surface_variant.dark.blue}},
+        0.6);
+}

@@ -5,7 +5,7 @@
     horizontal_padding = 20
 
     frame_width = 3
-    frame_color = "#${ACCENT_COLOR}"
+    frame_color = "{{colors.primary.dark.hex}}"
 
     gap_size = 10
 
@@ -23,24 +23,24 @@
     mouse_right_click = close_all
 
 [urgency_low]
-    background = "#${ACCENT_DARK_COLOR}"
-    foreground = "#${ACCENT_COLOR}"
+    background = "{{colors.surface_container.dark.hex}}"
+    foreground = "{{colors.tertiary.dark.hex}}"
     timeout = 3
     icon =
     default_icon =
 
 [urgency_normal]
-    background = "#${ACCENT_DARK_COLOR}"
-    foreground = "#${ACCENT_COLOR}"
+    background = "{{colors.surface_container.dark.hex}}"
+    foreground = "{{colors.tertiary.dark.hex}}"
     timeout = 3
     override_pause_level = 30
     icon =
     default_icon =
 
 [urgency_critical]
-    background = "#${ACCENT_DARK_COLOR}"
-    foreground = "#${ACCENT_COLOR}"
-    frame_color = "#ff0000"
+    background = "{{colors.surface_container.dark.hex}}"
+    foreground = "{{colors.tertiary.dark.hex}}"
+    frame_color = "{{colors.error.dark.hex}}"
     timeout = 3
     override_pause_level = 60
     icon =

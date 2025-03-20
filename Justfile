@@ -4,14 +4,16 @@ default:
 link-all:
     @just _link bash
     @just _link hypr
-    @just _link wallpapers
     @just _link dunst
-    @just _link css-theme
+    @just _link layer-shell
     @just _link ghostty
     @just _link starship
     @just _link xremap
     @just _link git
     @just _link wezterm
+    @just _link unsplash-wallpaper
+    @just _link matugen
+    @just _link libinput-gestures
     @just link-code
 
 _link MOD:

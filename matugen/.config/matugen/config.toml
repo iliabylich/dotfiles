@@ -1,0 +1,19 @@
+[config.wallpaper]
+command = "swaybg"
+arguments = ["--mode", "stretch", "--image"]
+set = true
+pre_hook = 'killall swaybg'
+
+[templates.dunst]
+input_path = '~/.config/dunst/dunstrc.template'
+output_path = '~/.config/dunst/dunstrc'
+post_hook = 'killall dunst && notify-send test'
+
+[templates.hyprland]
+input_path = '~/.config/hypr/colors.conf.template'
+output_path = '~/.config/hypr/colors.conf'
+
+[templates.layer-shell]
+input_path = '~/.config/layer-shell/theme.css.template'
+output_path = '~/.config/layer-shell/theme.css'
+post_hook = 'busctl --user call org.me.LayerShellControl /Control org.me.LayerShellControl ReloadStyles'
