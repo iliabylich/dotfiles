@@ -13,3 +13,7 @@ alias branch="git rev-parse --abbrev-ref HEAD"
 
 alias code="code --ozone-platform-hint=wayland"
 alias cat="batcat"
+
+alias ...="../.."
+
+alias tree="tree --dirsfirst -C"
