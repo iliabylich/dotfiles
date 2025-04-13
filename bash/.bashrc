@@ -40,6 +40,7 @@ eval "$(starship init bash)"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/sbin"
+export PATH="$PATH:/usr/local/go/bin"
 
 repeat() {
   for ((i=0; i<$1; i++)); do

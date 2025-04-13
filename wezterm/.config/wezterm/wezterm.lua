@@ -33,5 +33,6 @@ end
 
 config.enable_scroll_bar = true
 config.min_scroll_bar_height = "3cell"
+config.scrollback_lines = 10000
 
 return config
