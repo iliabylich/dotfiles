@@ -72,3 +72,6 @@ install-rust:
 binstall:
     cargo install cargo-binstall
     cargo binstall -y cargo-bloat cargo-outdated cbindgen dbus-codegen
+
+build-ruby-master:
+    ./scripts/build-ruby-master.sh
