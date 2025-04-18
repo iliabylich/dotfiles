@@ -34,7 +34,14 @@ elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-. "$HOME/.cargo/env"
+if [ -d ~/.cargo ]; then
+    . ~/.cargo/env
+fi
+
+if [ -d ~/.nvm ]; then
+    . ~/.nvm/nvm.sh
+    . ~/.nvm/bash_completion
+fi
 
 eval "$(starship init bash)"
 
