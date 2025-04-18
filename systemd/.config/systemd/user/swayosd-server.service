@@ -1,0 +1,9 @@
+[Unit]
+Description=Sway OSD Server
+
+[Service]
+ExecStart=swayosd-server
+WorkingDirectory=%h
+Environment=GTK_THEME=Adwaita:dark
+Restart=on-failure
+RestartSec=5s

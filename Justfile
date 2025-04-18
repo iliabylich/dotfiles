@@ -13,7 +13,7 @@ link-all:
     @just _link wezterm
     @just _link unsplash-wallpaper
     @just _link matugen
-    @just _link libinput-gestures
+    @just _link systemd
     @just link-code
 
 _link MOD:

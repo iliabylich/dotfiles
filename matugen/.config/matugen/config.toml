@@ -1,13 +1,12 @@
 [config.wallpaper]
-command = "swaybg"
-arguments = ["--mode", "stretch", "--image"]
+command = "systemctl"
+arguments = ["--user", "restart", "swaybg"]
 set = true
-pre_hook = 'killall swaybg'
 
 [templates.dunst]
 input_path = '~/.config/dunst/dunstrc.template'
 output_path = '~/.config/dunst/dunstrc'
-post_hook = 'killall dunst && notify-send test'
+post_hook = 'systemctl --user restart dunst && notify-send "Theme has been changed"'
 
 [templates.hyprland]
 input_path = '~/.config/hypr/colors.conf.template'

@@ -1,0 +1,8 @@
+[Unit]
+Description=Hyprland Polkit Agent
+
+[Service]
+ExecStart=/usr/libexec/hyprpolkitagent
+WorkingDirectory=%h
+Restart=on-failure
+RestartSec=5s

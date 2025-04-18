@@ -1,0 +1,9 @@
+[Unit]
+Description=Pipewire DBus
+After=pipewire.service
+
+[Service]
+ExecStart=pipewire-dbus
+WorkingDirectory=%h
+Restart=on-failure
+RestartSec=5s
