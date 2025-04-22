@@ -4,6 +4,7 @@ After=pipewire-dbus.service
 
 [Service]
 ExecStart=layer-shell
+ExecReload=busctl --user call org.me.LayerShellControl /Control org.me.LayerShellControl ReloadStyles
 WorkingDirectory=%h
 Restart=on-failure
 RestartSec=5s

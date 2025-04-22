@@ -15,4 +15,4 @@ output_path = '~/.config/hypr/colors.conf'
 [templates.layer-shell]
 input_path = '~/.config/layer-shell/theme.css.template'
 output_path = '~/.config/layer-shell/theme.css'
-post_hook = 'busctl --user call org.me.LayerShellControl /Control org.me.LayerShellControl ReloadStyles'
+post_hook = 'systemctl --user reload layer-shell'
