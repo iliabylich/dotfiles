@@ -24,15 +24,6 @@ link-code:
     rm -rf ~/.config/Code/User/settings.json
     @just _link code
 
-render-templates:
-    ./templates.sh
-
-notify-send text:
-    @just render-templates
-    systemctl --user restart dunst
-    notify-send "{{text}}-1"
-    notify-send "{{text}}-2"
-
 install-chrome:
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome.deb
     sudo apt install -y ./google-chrome.deb
