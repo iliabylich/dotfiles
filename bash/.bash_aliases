@@ -1,4 +1,6 @@
-alias ls="lsd"
+if command -v lsd &> /dev/null; then
+    alias ls="lsd"
+fi
 alias ll="ls -l"
 alias la="ls -la"
 
@@ -11,8 +13,12 @@ alias gst="git status"
 alias gd="git diff"
 alias branch="git rev-parse --abbrev-ref HEAD"
 
-alias code="code --ozone-platform-hint=wayland"
-alias cat="batcat"
+if command -v code &> /dev/null; then
+    alias code="code --ozone-platform-hint=wayland"
+fi
+if command -v batcat &> /dev/null; then
+    alias cat="batcat"
+fi
 
 alias ...="../.."
 
