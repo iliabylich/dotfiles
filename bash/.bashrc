@@ -50,14 +50,3 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/sbin"
 export PATH="$PATH:/usr/local/go/bin"
-
-repeat() {
-  for ((i=0; i<$1; i++)); do
-    eval ${*:2}
-  done
-}
-
-notify-once-done() {
-    eval "${*:1}"
-    notify-send --urgency critical --wait "Command finished" "${*:1}"
-}

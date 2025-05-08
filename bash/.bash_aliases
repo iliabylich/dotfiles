@@ -23,3 +23,32 @@ fi
 alias ...="../.."
 
 alias tree="tree --dirsfirst -C"
+
+repeat() {
+  for ((i=0; i<$1; i++)); do
+    eval ${*:2}
+  done
+}
+
+notify-once-done() {
+    eval "${*:1}"
+    notify-send --urgency critical --wait "Command finished" "${*:1}"
+}
+
+foreach-rust-dir() {
+    for cargo_toml_path in $(find $1 -maxdepth 2 -name Cargo.toml); do
+        local dir="$(dirname "$cargo_toml_path")"
+        echo "Entering $dir:"
+        pushd "$dir"
+        eval "$2"
+        popd
+    done
+}
+
+cargo-update-all() {
+    foreach-rust-dir "$1" "cargo update && cargo outdated && cargo check"
+}
+
+cargo-clean-all() {
+    foreach-rust-dir "$1" "cargo clean"
+}
