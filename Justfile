@@ -14,6 +14,7 @@ link-all:
     @just _link unsplash-wallpaper
     @just _link matugen
     @just _link systemd
+    @just _link satty
     @just link-code
 
 _link MOD:
