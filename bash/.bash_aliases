@@ -52,3 +52,7 @@ cargo-update-all() {
 cargo-clean-all() {
     foreach-rust-dir "$1" "cargo clean"
 }
+
+df() {
+    /bin/df ${*:1} | grep -vE "tmpfs|udev|efivars"
+}
