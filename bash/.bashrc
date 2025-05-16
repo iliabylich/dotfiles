@@ -4,22 +4,15 @@ case $- in
       *) return;;
 esac
 
-# ignore duplicates and empty lines in history
 HISTCONTROL=erasedups:ignoredups:ignorespace
-
-# append to the history file instead of overwriting it
-shopt -s histappend
-
 HISTSIZE=500
 HISTFILESIZE=5000
 
-# check the window size after each command and, if necessary, update LINES and COLUMNS.
+shopt -s histappend
 shopt -s checkwinsize
-
-# expand "**" pattern
 shopt -s globstar
-
 shopt -s autocd
+bind -s 'set completion-ignore-case on'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
