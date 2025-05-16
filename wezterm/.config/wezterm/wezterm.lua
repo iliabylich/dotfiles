@@ -35,4 +35,23 @@ config.enable_scroll_bar = true
 config.min_scroll_bar_height = "3cell"
 config.scrollback_lines = 10000
 
+-- open links with ctrl+click
+config.mouse_bindings = {
+    {
+      event = { Up = { streak = 1, button = "Left"} },
+      mods = "NONE",
+      action = wezterm.action.DisableDefaultAssignment,
+    },
+    {
+        event = { Up = { streak = 1, button = "Left" } },
+        mods = "CTRL",
+        action = wezterm.action.OpenLinkAtMouseCursor,
+    },
+    {
+        event = { Down = { streak = 1, button = "Left" } },
+        mods = "CTRL",
+        action = wezterm.action.Nop,
+    },
+}
+
 return config
