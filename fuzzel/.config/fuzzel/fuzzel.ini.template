@@ -1,0 +1,25 @@
+font=Inter Variable:size=12
+prompt=">  "
+
+lines=5
+width=40
+horizontal-pad=40
+vertical-pad=40
+inner-pad=20
+
+line-height=30
+
+[colors]
+background={{colors.surface_container.dark.hex_stripped}}99
+text={{colors.on_surface.dark.hex_stripped}}ff
+prompt={{colors.on_surface.dark.hex_stripped}}ff
+input={{colors.on_surface.dark.hex_stripped}}ff
+match={{colors.outline.dark.hex_stripped}}ff
+selection={{colors.inverse_primary.dark.hex_stripped}}ff
+selection-text={{colors.on_surface.dark.hex_stripped}}ff
+selection-match={{colors.outline.dark.hex_stripped}}ff
+border={{colors.inverse_primary.dark.hex_stripped}}ff
+
+[border]
+width=10
+radius=20

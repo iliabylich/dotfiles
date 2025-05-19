@@ -16,3 +16,7 @@ output_path = '~/.config/hypr/colors.conf'
 input_path = '~/.config/layer-shell/theme.css.template'
 output_path = '~/.config/layer-shell/theme.css'
 post_hook = 'busctl --user call org.me.LayerShellControl /Control org.me.LayerShellControl ReloadStyles'
+
+[templates.fuzzel]
+input_path = '~/.config/fuzzel/fuzzel.ini.template'
+output_path = '~/.config/fuzzel/fuzzel.ini'

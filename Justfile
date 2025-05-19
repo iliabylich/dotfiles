@@ -15,6 +15,7 @@ link-all:
     @just _link matugen
     @just _link systemd
     @just _link satty
+    @just _link fuzzel
     @just link-code
 
 _link MOD:
