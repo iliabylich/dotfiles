@@ -11,5 +11,6 @@
     "git.openRepositoryInParentFolders": "never",
     "rust-analyzer.imports.granularity.enforce": true,
     "rust-analyzer.imports.prefix": "crate",
-    "zig.zls.enabled": "on"
+    "zig.zls.enabled": "on",
+    "editor.fontFamily": "'AdwaitaMono Nerd Font', 'monospace', monospace"
 }
