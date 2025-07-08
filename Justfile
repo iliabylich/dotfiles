@@ -8,7 +8,6 @@ link-all:
     @just _link layer-shell
     @just _link ghostty
     @just _link starship
-    @just _link xremap
     @just _link git
     @just _link wezterm
     @just _link unsplash-wallpaper
@@ -68,3 +67,11 @@ binstall:
 
 build-ruby-master:
     ./scripts/build-ruby-master.sh
+
+install-xremap:
+    sudo rm -f /etc/xremap.yml /usr/lib/systemd/system/xremap.service
+    sudo cp $PWD/xremap/xremap.yml /etc/xremap.yml
+    sudo cp $PWD/xremap/xremap.service /usr/lib/systemd/system/xremap.service
+    sudo systemctl daemon-reload
+    sudo systemctl daemon-reexec
+    sudo systemctl enable --now xremap

@@ -1,0 +1,10 @@
+[Unit]
+Description=xremap
+
+[Service]
+ExecStart=xremap /etc/xremap.yml
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
