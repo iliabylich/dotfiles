@@ -1,4 +1,5 @@
 unsplash-wallpaper/.config/unsplash-wallpaper/token
+systemd/.config/systemd/user/graphical-session.target.wants
 
 # template-rendered dynamic files
 dunst/.config/dunst/dunstrc

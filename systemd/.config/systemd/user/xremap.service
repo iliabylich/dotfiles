@@ -1,9 +1,0 @@
-[Unit]
-Description=xremap
-
-[Service]
-# <user>	ALL=NOPASSWD:/usr/bin/xremap
-ExecStart=gaskpass-sudo xremap .config/xremap.yml
-WorkingDirectory=%h
-Restart=on-failure
-RestartSec=5s

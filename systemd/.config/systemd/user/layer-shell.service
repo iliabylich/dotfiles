@@ -1,6 +1,6 @@
 [Unit]
 Description=Layer Shell
-After=pipewire-dbus.service
+After=pipewire-dbus.service graphical-session.target
 
 [Service]
 ExecStart=layer-shell
@@ -8,3 +8,7 @@ ExecReload=busctl --user call org.me.LayerShellControl /Control org.me.LayerShel
 WorkingDirectory=%h
 Restart=on-failure
 RestartSec=5s
+Slice=app-graphical.slice
+
+[Install]
+WantedBy=graphical-session.target
