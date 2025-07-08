@@ -12,4 +12,7 @@
         {{colors.surface_variant.dark.green}},
         {{colors.surface_variant.dark.blue}},
         0.6);
+    --popover-bg-color: {{colors.primary_container.dark.hex}};
+    --popover-bg-color-on-hover: {{colors.inverse_primary.dark.hex}};
+    --popover-bg-color-disabled: {{colors.secondary_container.dark.hex}};
 }
