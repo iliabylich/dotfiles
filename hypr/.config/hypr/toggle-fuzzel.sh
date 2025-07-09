@@ -2,8 +2,4 @@
 
 set -eu
 
-if pgrep -x fuzzel > /dev/null; then
-    pkill fuzzel
-else
-    fuzzel
-fi
+pkill fuzzel || fuzzel
