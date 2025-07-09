@@ -1,8 +1,0 @@
-[Unit]
-Description=Warm up PipeWire sink with silent audio
-After=pipewire.service pipewire-pulse.service
-Requires=pipewire.service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/pw-play %h/.config/systemd/user/silence.wav
