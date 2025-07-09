@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -euo pipefail
 
 backgrounds_dir=~/.local/share/backgrounds
 filename="$(ls $backgrounds_dir | grep unsplash | shuf -n 1)"

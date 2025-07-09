@@ -1,0 +1,13 @@
+lock = "hyprlock"
+reboot = "systemctl reboot"
+shutdown = "systemctl poweroff"
+edit_wifi = "iwmenu --launcher fuzzel"
+edit_bluetooth = "bzmenu --launcher fuzzel"
+open_system_monitor = "gnome-system-monitor"
+change_theme = "~/.config/hypr/wallpaper-change.sh"
+
+ping = ["ping", "8.8.8.8"]
+
+[terminal]
+label = "HTop"
+command = ["htop"]
