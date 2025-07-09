@@ -4,8 +4,8 @@ if [[ $(tty) =~ /dev/tty[1-6] ]]; then
     done
 fi
 
-if [[ $(tty) == /dev/tty1 ]] && uwsm check may-start; then
-    exec uwsm start hyprland-uwsm.desktop
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+    exec Hyprland
 fi
 
 if [ -f ~/.bashrc ]; then

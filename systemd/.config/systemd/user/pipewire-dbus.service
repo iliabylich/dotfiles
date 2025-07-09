@@ -1,13 +1,8 @@
 [Unit]
 Description=Pipewire DBus
-After=pipewire.service graphical-session.target
 
 [Service]
 ExecStart=pipewire-dbus
 WorkingDirectory=%h
 Restart=on-failure
 RestartSec=5s
-Slice=app-graphical.slice
-
-[Install]
-WantedBy=graphical-session.target

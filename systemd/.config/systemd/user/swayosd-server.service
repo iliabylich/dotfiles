@@ -1,6 +1,5 @@
 [Unit]
 Description=Sway OSD Server
-After=graphical-session.target
 
 [Service]
 ExecStart=swayosd-server
@@ -8,7 +7,3 @@ WorkingDirectory=%h
 Environment=GTK_THEME=Adwaita:dark
 Restart=on-failure
 RestartSec=5s
-Slice=app-graphical.slice
-
-[Install]
-WantedBy=graphical-session.target

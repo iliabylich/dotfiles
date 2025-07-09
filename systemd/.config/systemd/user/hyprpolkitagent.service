@@ -1,13 +1,8 @@
 [Unit]
 Description=Hyprland Polkit Agent
-After=graphical-session.target
 
 [Service]
 ExecStart=/usr/libexec/hyprpolkitagent
 WorkingDirectory=%h
 Restart=on-failure
 RestartSec=5s
-Slice=app-graphical.slice
-
-[Install]
-WantedBy=graphical-session.target
