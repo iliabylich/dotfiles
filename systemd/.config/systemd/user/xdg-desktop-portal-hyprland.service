@@ -1,8 +1,0 @@
-[Unit]
-Description=Hyprland XDG Desktop Portal
-
-[Service]
-ExecStart=/usr/lib/xdg-desktop-portal-hyprland
-WorkingDirectory=%h
-Restart=on-failure
-RestartSec=5s
