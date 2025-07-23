@@ -25,20 +25,19 @@ link-code:
     rm -rf ~/.config/Code/User/settings.json
     @just _link code
 
+install-deb url name:
+    wget "{{url}}" -O "{{name}}"
+    sudo apt install -y "./{{name}}"
+    rm -f "{{name}}"
+
 install-chrome:
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome.deb
-    sudo apt install -y ./google-chrome.deb
-    rm -f google-chrome.deb
+    @just install-deb "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" google-chrome.deb
 
 install-vscode:
-    wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O vscode.deb
-    sudo apt install -y ./vscode.deb
-    rm -f vscode.deb
+    @just install-deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" vscode.deb
 
 install-1password:
-    wget https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
-    sudo apt install -y ./1password-latest.deb
-    rm -f 1password-latest.deb
+    @just install-deb "https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb" 1password-latest.deb
 
 generate-ssh-key:
     git config --global user.email "ibylich@gmail.com"
@@ -50,8 +49,20 @@ install-rust:
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 binstall:
-    cargo install cargo-binstall
-    cargo binstall -y cargo-bloat cargo-outdated cbindgen dbus-codegen
+    cargo binstall -y cargo-binstall || cargo install cargo-binstall
+    cargo binstall -y \
+        cargo-bloat \
+        cargo-deb \
+        cargo-expand \
+        cargo-llvm-lines \
+        cargo-ndk \
+        cargo-outdated \
+        cargo-udeps \
+        cbindgen \
+        dbus-codegen \
+        mdbook \
+        tokio-console \
+        zbus_xmlgen
 
 build-ruby-master:
     ./scripts/build-ruby-master.sh
