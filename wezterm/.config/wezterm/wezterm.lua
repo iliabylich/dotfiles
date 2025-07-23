@@ -1,8 +1,18 @@
-local wezterm = require 'wezterm'
+function prequire(...)
+    local status, lib = pcall(require, ...)
+    if(status) then return lib end
+    return {}
+end
+
+local wezterm = require('wezterm')
+local theme = prequire('colors')
 local config = wezterm.config_builder()
 local act = wezterm.action
 
 config.color_scheme = 'Andromeda'
+
+config.colors = {}
+config.colors.background = theme.surface_container or 'black';
 
 local padding = "30px"
 config.window_padding = {
@@ -34,6 +44,8 @@ end
 config.enable_scroll_bar = true
 config.min_scroll_bar_height = "3cell"
 config.scrollback_lines = 100000
+
+config.window_background_opacity = 0.8
 
 -- open links with ctrl+click
 config.mouse_bindings = {
