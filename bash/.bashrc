@@ -40,6 +40,14 @@ if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
 fi
 
+if command -v fzf &> /dev/null; then
+    export FZF_DEFAULT_COMMAND="rg --files"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND=""
+
+    eval "$(fzf --bash)"
+fi
+
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/sbin"
 export PATH="$PATH:/usr/local/go/bin"
