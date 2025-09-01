@@ -5,14 +5,19 @@ case $- in
 esac
 
 HISTCONTROL=erasedups:ignoredups:ignorespace
-HISTSIZE=500
-HISTFILESIZE=5000
+HISTSIZE=500000
+HISTFILESIZE=100000
 
 shopt -s histappend
 shopt -s checkwinsize
 shopt -s globstar
 shopt -s autocd
-bind -s 'set completion-ignore-case on'
+shopt -s cmdhist
+shopt -s dirspell
+shopt -s cdspell
+bind "set completion-ignore-case on"
+bind "set completion-map-case on"
+bind "set show-all-if-ambiguous on"
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
