@@ -24,3 +24,8 @@ output_path = '~/.config/fuzzel/fuzzel.ini'
 [templates.wezterm]
 input_path = '~/.config/wezterm/colors.lua.template'
 output_path = '~/.config/wezterm/colors.lua'
+
+[templates.ghostty]
+input_path = '~/.config/ghostty/config.template'
+output_path = '~/.config/ghostty/config'
+post_hook = 'hyprctl dispatch sendshortcut "CTRL SHIFT, comma, class:com.mitchellh.ghostty"'
