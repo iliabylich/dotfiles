@@ -1,6 +1,6 @@
 * {
-    <* for name, value in colors -*>
+    <* for name, value in colors *>
     --{{name}}: {{value.dark.hex}};
     --{{name}}-alpha: {{value.dark.rgba | set_alpha: 0.6}};
-    <* endfor -*>
+    <* endfor *>
 }
