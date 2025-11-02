@@ -46,7 +46,7 @@ foreach-rust-dir() {
 }
 
 cargo-update-all() {
-    foreach-rust-dir "$1" "cargo update && cargo outdated && cargo check"
+    foreach-rust-dir "$1" "cargo update --verbose && cargo outdated && cargo check"
 }
 
 cargo-clean-all() {
