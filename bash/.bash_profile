@@ -5,7 +5,7 @@ if [[ $(tty) =~ /dev/tty[1-6] ]]; then
 fi
 
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-    exec Hyprland
+    exec start-hyprland
 fi
 
 if [ -f ~/.bashrc ]; then
