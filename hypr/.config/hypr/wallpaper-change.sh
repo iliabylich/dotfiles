@@ -3,7 +3,7 @@
 set -euo pipefail
 
 backgrounds_dir=~/.local/share/backgrounds
-filename="$(ls $backgrounds_dir | grep unsplash | shuf -n 1)"
+filename="$(ls $backgrounds_dir | grep -v current | shuf -n 1)"
 filepath="$backgrounds_dir/$filename"
 
 echo "Choosing $filepath"
