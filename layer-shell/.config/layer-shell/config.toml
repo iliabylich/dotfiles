@@ -1,6 +1,7 @@
 lock = "hyprlock"
 reboot = "systemctl reboot"
 shutdown = "systemctl poweroff"
+logout = "niri msg action quit"
 edit_wifi = "iwmenu --launcher fuzzel"
 edit_bluetooth = "bzmenu --launcher fuzzel"
 open_system_monitor = "gnome-system-monitor"

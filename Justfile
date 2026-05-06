@@ -14,6 +14,7 @@ link-all:
     @just _link systemd
     @just _link satty
     @just _link fuzzel
+    @just _link niri
     @just link-code
 
 _link MOD:

@@ -4,8 +4,11 @@ if [[ $(tty) =~ /dev/tty[1-6] ]]; then
     done
 fi
 
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-    exec start-hyprland
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ] && [ -z "$NIRI_LOADED" ]; then
+    echo "Starting niri..."
+    export NIRI_LOADED=1
+    export GTK_THEME="Adwaita:dark"
+    exec niri-session
 fi
 
 if [ -f ~/.bashrc ]; then

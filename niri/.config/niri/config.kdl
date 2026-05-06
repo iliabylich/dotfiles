@@ -1,0 +1,147 @@
+environment {
+    GDK_SCALE "2"
+}
+
+spawn-at-startup "systemctl" "--user" "start" "pipewire-dbus"
+spawn-at-startup "systemctl" "--user" "start" "layer-shell"
+spawn-at-startup "systemctl" "--user" "start" "swaybg"
+spawn-at-startup "systemctl" "--user" "start" "mpclipboard-client"
+
+spawn-at-startup "ghostty"
+spawn-at-startup "1password" "--silent"
+spawn-at-startup "google-chrome"
+
+input {
+    keyboard {
+        xkb {
+            layout "us,pl"
+            options "grp:alt_shift_toggle"
+        }
+    }
+
+    touchpad {
+        natural-scroll
+        accel-speed 0.1
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="1%"
+}
+
+output "DP-1" {
+    mode "3840x2160@60"
+    scale 1.875
+}
+
+layout {
+    gaps 10
+
+    focus-ring {
+        off
+    }
+
+    border {
+        width 4
+        active-color "#939393"
+        inactive-color "#2d2d2d"
+        urgent-color "#9b0000"
+    }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+window-rule {
+    open-maximized false
+    open-maximized-to-edges false
+    open-fullscreen false
+    geometry-corner-radius 12
+    clip-to-geometry true
+
+    default-column-width { proportion 0.5; }
+}
+
+layer-rule {
+    match namespace="launcher"
+    match namespace="LayerShell/Weather"
+    // match namespace="LayerShell/Session"
+    // match namespace="LayerShell/TopBar"
+
+    background-effect {
+        xray false
+        blur true
+    }
+}
+
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="org.gnome.SystemMonitor"
+    match app-id="1password"
+
+    open-floating true
+}
+
+window-rule {
+    match app-id="google-chrome"
+    match app-id="code"
+    default-column-width { proportion 1.0; }
+}
+
+recent-windows {
+    open-delay-ms 300
+
+    highlight {
+        active-color "#939393"
+        urgent-color "#2d2d2d"
+        padding 30
+        corner-radius 10
+    }
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+Shift+T { spawn "ghostty"; }
+    Mod+Shift+Q repeat=false { close-window; }
+    Mod+E { spawn "nautilus"; }
+    Mod+Space { spawn "~/.config/hypr/toggle-fuzzel.sh"; }
+    Super+Escape { spawn "busctl" "--user" "call" "org.me.LayerShellControl" "/" "org.me.LayerShellControl" "ToggleSessionScreen"; }
+
+    Ctrl+Alt+Left  { focus-column-left; }
+    Ctrl+Alt+Right { focus-column-right; }
+    Ctrl+Alt+Up    { focus-workspace-up; }
+    Ctrl+Alt+Down  { focus-workspace-down; }
+
+    Mod+H { move-column-left; }
+    Mod+L { move-column-right; }
+    Mod+K { move-column-to-workspace-up; }
+    Mod+J { move-column-to-workspace-down; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- --limit 1"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    // XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    // XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    // XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Minus { set-column-width "-25%"; }
+    Mod+Equal { set-column-width "+25%"; }
+}
