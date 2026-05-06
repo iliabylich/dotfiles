@@ -12,5 +12,16 @@
     "rust-analyzer.imports.granularity.enforce": true,
     "rust-analyzer.imports.prefix": "crate",
     "zig.zls.enabled": "on",
-    "editor.fontFamily": "'AdwaitaMono Nerd Font', 'monospace', monospace"
+    "editor.fontFamily": "'AdwaitaMono Nerd Font', 'monospace', monospace",
+    "chat.checkpoints.enabled": false,
+    "chat.customAgentInSubagent.enabled": false,
+    "chat.editing.confirmEditRequestRemoval": false,
+    "chat.editing.confirmEditRequestRetry": false,
+    "chat.editRequests": "none",
+    "chat.agent.enabled": false,
+    "chat.undoRequests.restoreInput": false,
+    "chat.agent.codeBlockProgress": false,
+    "chat.agent.thinking.generateTitles": false,
+    "inlineChat.affordance": "off",
+    "workbench.colorTheme": "Dark Modern"
 }
