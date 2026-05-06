@@ -1,9 +1,7 @@
 window-padding-x = 10
 window-padding-y = 10
-background-opacity = 0.95
 font-feature = -calt
 gtk-titlebar = false
 keybind = ctrl+l=clear_screen
-background = {{colors.surface_container.dark.hex_stripped}}
 window-theme = ghostty
 theme = Afterglow

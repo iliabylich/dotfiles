@@ -6,8 +6,3 @@ set = true
 input_path = '~/.config/dunst/dunstrc.template'
 output_path = '~/.config/dunst/dunstrc'
 post_hook = 'systemctl --user restart dunst && notify-send "Theme has been changed"'
-
-[templates.ghostty]
-input_path = '~/.config/ghostty/config.template'
-output_path = '~/.config/ghostty/config'
-# post_hook = 'hyprctl dispatch sendshortcut "CTRL SHIFT, comma, class:com.mitchellh.ghostty"'

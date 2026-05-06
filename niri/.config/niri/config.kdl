@@ -64,26 +64,6 @@ window-rule {
     default-column-width { proportion 0.5; }
 }
 
-layer-rule {
-    match namespace="launcher"
-    match namespace="LayerShell/Weather"
-    // match namespace="LayerShell/Session"
-    // match namespace="LayerShell/TopBar"
-
-    background-effect {
-        xray false
-        blur true
-    }
-}
-
-window-rule {
-    match app-id=r#"^com\.mitchellh\.ghostty$"#
-
-    background-effect {
-        blur true
-    }
-}
-
 window-rule {
     match app-id="org.gnome.SystemMonitor"
     match app-id="1password"
