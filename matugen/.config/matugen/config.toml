@@ -7,10 +7,6 @@ input_path = '~/.config/dunst/dunstrc.template'
 output_path = '~/.config/dunst/dunstrc'
 post_hook = 'systemctl --user restart dunst && notify-send "Theme has been changed"'
 
-[templates.fuzzel]
-input_path = '~/.config/fuzzel/fuzzel.ini.template'
-output_path = '~/.config/fuzzel/fuzzel.ini'
-
 [templates.ghostty]
 input_path = '~/.config/ghostty/config.template'
 output_path = '~/.config/ghostty/config'
