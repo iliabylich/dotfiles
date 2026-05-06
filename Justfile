@@ -14,6 +14,7 @@ link-all:
     @just _link fuzzel
     @just _link niri
     @just _link scripts
+    @just _link xdg-desktop-portal
     @just link-code
 
 _link MOD:
