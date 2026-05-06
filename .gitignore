@@ -1,7 +1,5 @@
 # template-rendered dynamic files
 dunst/.config/dunst/dunstrc
 hypr/.config/hypr/colors.conf
-layer-shell/.config/layer-shell/theme.css
 fuzzel/.config/fuzzel/fuzzel.ini
-wezterm/.config/wezterm/colors.lua
 ghostty/.config/ghostty/config
