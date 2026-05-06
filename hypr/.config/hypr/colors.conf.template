@@ -1,2 +1,0 @@
-$accentColor = rgb({{colors.primary.dark.hex_stripped}})
-$bgColor = rgb({{colors.source_color.dark.hex_stripped}})
