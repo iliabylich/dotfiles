@@ -5,7 +5,7 @@ logout = "niri msg action quit"
 edit_wifi = "iwmenu --launcher fuzzel"
 edit_bluetooth = "bzmenu --launcher fuzzel"
 open_system_monitor = "gnome-system-monitor"
-change_theme = "~/.scripts/wallpaper-change.sh"
+change_theme = "bash ~/.scripts/wallpaper-change.sh"
 
 ping = ["ping", "8.8.8.8"]
 
