@@ -9,7 +9,6 @@ link-all:
     @just _link ghostty
     @just _link starship
     @just _link git
-    @just _link matugen
     @just _link systemd
     @just _link satty
     @just _link fuzzel

@@ -1,3 +1,0 @@
-[config.wallpaper]
-command = "systemctl --user restart swaybg"
-set = true
