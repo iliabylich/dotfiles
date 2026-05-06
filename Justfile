@@ -13,6 +13,7 @@ link-all:
     @just _link satty
     @just _link fuzzel
     @just _link niri
+    @just _link scripts
     @just link-code
 
 _link MOD:
@@ -20,7 +21,7 @@ _link MOD:
 
 link-code:
     mkdir -p ~/.config/Code/User
-    rm -rf ~/.config/Code/User/settings.json
+    rm -f ~/.config/Code/User/settings.json
     @just _link code
 
 install-deb url name:
@@ -61,9 +62,6 @@ binstall:
         mdbook \
         tokio-console \
         zbus_xmlgen
-
-build-ruby-master:
-    ./scripts/build-ruby-master.sh
 
 install-xremap:
     sudo rm -f /etc/xremap.yml /usr/lib/systemd/system/xremap.service

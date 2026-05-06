@@ -48,6 +48,12 @@ layout {
     }
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 hotkey-overlay {
     skip-at-startup
 }
@@ -94,7 +100,7 @@ binds {
     Mod+Shift+T { spawn "ghostty"; }
     Mod+Shift+Q repeat=false { close-window; }
     Mod+E { spawn "nautilus"; }
-    Mod+Space { spawn "~/.config/hypr/toggle-fuzzel.sh"; }
+    Mod+Space { spawn "~/.scripts/toggle-fuzzel.sh"; }
     Super+Escape { spawn "busctl" "--user" "call" "org.me.LayerShellControl" "/" "org.me.LayerShellControl" "ToggleSessionScreen"; }
 
     Ctrl+Alt+Left  { focus-column-left; }
