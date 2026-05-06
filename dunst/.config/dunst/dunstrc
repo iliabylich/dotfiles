@@ -5,7 +5,7 @@
     horizontal_padding = 20
 
     frame_width = 3
-    frame_color = "{{colors.primary.dark.hex}}"
+    frame_color = "#c2c9b3"
 
     gap_size = 10
 
@@ -23,24 +23,24 @@
     mouse_right_click = close_all
 
 [urgency_low]
-    background = "{{colors.surface_container.dark.hex}}"
-    foreground = "{{colors.tertiary.dark.hex}}"
+    background = "#1f201e"
+    foreground = "#bfcbad"
     timeout = 3
     icon =
     default_icon =
 
 [urgency_normal]
-    background = "{{colors.surface_container.dark.hex}}"
-    foreground = "{{colors.tertiary.dark.hex}}"
+    background = "#1f201e"
+    foreground = "#bfcbad"
     timeout = 3
     override_pause_level = 30
     icon =
     default_icon =
 
 [urgency_critical]
-    background = "{{colors.surface_container.dark.hex}}"
-    foreground = "{{colors.tertiary.dark.hex}}"
-    frame_color = "{{colors.error.dark.hex}}"
+    background = "#1f201e"
+    foreground = "#bfcbad"
+    frame_color = "#ffb4ab"
     timeout = 3
     override_pause_level = 60
     icon =

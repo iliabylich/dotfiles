@@ -1,8 +1,3 @@
 [config.wallpaper]
 command = "systemctl --user restart swaybg"
 set = true
-
-[templates.dunst]
-input_path = '~/.config/dunst/dunstrc.template'
-output_path = '~/.config/dunst/dunstrc'
-post_hook = 'systemctl --user restart dunst && notify-send "Theme has been changed"'
