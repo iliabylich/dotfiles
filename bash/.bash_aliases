@@ -56,3 +56,5 @@ cargo-clean-all() {
 df() {
     /bin/df ${*:1} | grep -vE "tmpfs|udev|efivars"
 }
+
+alias gamescope-wine="gamescope -f -w 1920 -h 1080 -W 1920 -H 1080 --force-grab-cursor --mouse-sensitivity 0.4 -- wine"
