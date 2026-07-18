@@ -5,3 +5,5 @@ gtk-titlebar = false
 keybind = ctrl+l=clear_screen
 window-theme = ghostty
 theme = Afterglow
+
+font-family="AdwaitaMono Nerd Font Mono"

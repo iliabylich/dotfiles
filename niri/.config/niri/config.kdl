@@ -8,7 +8,6 @@ spawn-at-startup "systemctl" "--user" "start" "swaybg"
 spawn-at-startup "systemctl" "--user" "start" "mpclipboard-client"
 
 spawn-at-startup "ghostty"
-spawn-at-startup "1password" "--silent"
 spawn-at-startup "google-chrome"
 
 input {
@@ -41,7 +40,7 @@ layout {
     }
 
     border {
-        width 4
+        width 2
         active-color "#5a614f"
         inactive-color "#2d2d2d"
         urgent-color "#9b0000"
@@ -101,7 +100,7 @@ binds {
     Mod+Shift+Q repeat=false { close-window; }
     Mod+E { spawn "nautilus"; }
     Mod+Space { spawn "~/.scripts/toggle-fuzzel.sh"; }
-    Super+Escape { spawn "busctl" "--user" "call" "org.me.LayerShellControl" "/" "org.me.LayerShellControl" "ToggleSessionScreen"; }
+    Super+Escape { spawn "~/.scripts/toggle-session-screen.sh"; }
 
     Ctrl+Alt+Left  { focus-column-left; }
     Ctrl+Alt+Right { focus-column-right; }

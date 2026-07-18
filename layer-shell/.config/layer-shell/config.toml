@@ -6,9 +6,6 @@ edit_wifi = "iwmenu --launcher fuzzel"
 edit_bluetooth = "bzmenu --launcher fuzzel"
 open_system_monitor = "gnome-system-monitor"
 change_wallpaper = "bash ~/.scripts/wallpaper-change.sh"
-
-ping = ["ping", "8.8.8.8"]
-
-[terminal]
-label = "HTop"
-command = ["htop"]
+ping = "ping 8.8.8.8"
+terminal_label = "HTop"
+terminal_command = "htop"

@@ -23,5 +23,5 @@
     "chat.agent.codeBlockProgress": false,
     "chat.agent.thinking.generateTitles": false,
     "inlineChat.affordance": "off",
-    "workbench.colorTheme": "Dark Modern"
+    "workbench.colorTheme": "Dark Modern",
 }
