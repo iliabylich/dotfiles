@@ -8,7 +8,6 @@
     "explorer.confirmDragAndDrop": false,
     "mesonbuild.downloadLanguageServer": true,
     "chat.commandCenter.enabled": false,
-    "git.openRepositoryInParentFolders": "never",
     "rust-analyzer.imports.granularity.enforce": true,
     "rust-analyzer.imports.prefix": "crate",
     "zig.zls.enabled": "on",
@@ -24,4 +23,5 @@
     "chat.agent.thinking.generateTitles": false,
     "inlineChat.affordance": "off",
     "workbench.colorTheme": "Dark Modern",
+    "git.openRepositoryInParentFolders": "always",
 }
